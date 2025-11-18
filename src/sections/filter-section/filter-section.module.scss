@@ -1,0 +1,18 @@
+.filter_section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 2rem;
+
+  @include mix.media-up('lg') {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.categories_wrap {
+}
+
+.sort_wrap {
+}

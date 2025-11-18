@@ -1,0 +1,15 @@
+.list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  list-style-type: none;
+  margin-block: 0;
+  padding-left: 0;
+
+  @include mix.media-up('md') {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

@@ -1,0 +1,52 @@
+.select {
+  appearance: base-select;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  color: #fe5f1e;
+  display: flex;
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  margin-inline: auto;
+  outline: none;
+  padding-bottom: 1rem;
+  transition: rotate 0.25s;
+  text-align: center;
+
+  &::picker-icon {
+    transition: rotate 0.25s;
+    color: #000;
+    order: -1;
+  }
+
+  &:open::picker-icon {
+    rotate: -90deg;
+  }
+
+  &::picker(select) {
+    appearance: base-select;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 12px lightgrey;
+    background-color: #fff;
+    color: #000;
+    padding-block: 1rem 0.75rem;
+  }
+}
+
+.button {
+  :first-child {
+    color: #000;
+  }
+}
+
+.option {
+  padding: 10px 20px 10px 15px;
+
+  &:checked {
+    background-color: rgba(#fe5f1e05, 0.1);
+    color: #fe5f1e;
+    font-weight: 700;
+  }
+}

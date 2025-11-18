@@ -1,0 +1,49 @@
+.wrapper {
+  align-items: center;
+  height: 40px;
+  position: relative;
+  max-width: 17.5rem;
+}
+
+.search_input {
+  border: 1px solid #7b7b7b;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  height: 100%;
+  outline: transparent;
+  padding-inline: 1.3rem 2.5rem;
+  transition: border-color 0.25s;
+  width: 100%;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &:focus {
+    border-color: var(--color-orange);
+  }
+}
+
+.cancel_icon {
+  cursor: pointer;
+  fill: var(--color-orange);
+  height: 1.5rem;
+  inset-block: 0;
+  margin-block: auto;
+  position: absolute;
+  right: 0.7rem;
+  width: 1.5rem;
+  transition: rotate 0.25s;
+
+  &:focus {
+    outline: transparent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #000;
+  }
+
+  &:hover {
+    rotate: 90deg;
+  }
+}

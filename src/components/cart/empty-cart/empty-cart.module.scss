@@ -1,0 +1,47 @@
+.section {
+  display: grid;
+  justify-items: center;
+  max-width: 37.5rem;
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0 0 0.75rem;
+}
+
+.subtitle {
+  color: #777;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  margin: 0 0 3rem;
+  text-align: center;
+
+  .line_brake {
+    display: none;
+
+    @include mix.media-up('md') {
+      display: block;
+    }
+  }
+}
+
+.picture {
+  max-width: 18.75rem;
+  margin-bottom: 5rem;
+  width: 100%;
+}
+
+.link {
+  border-radius: 2rem;
+  background-color: #282828;
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  min-width: 13rem;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  text-align: center;
+}

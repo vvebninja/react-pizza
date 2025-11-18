@@ -1,0 +1,32 @@
+$breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+);
+
+@mixin media-up($size) {
+  $breakpoint-value: map-get($breakpoints, $size);
+
+  @if $breakpoint-value {
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$size}' not found in $breakpoints MAP.";
+  }
+}
+
+@mixin media-down($size) {
+  $breakpoint-value: map-get($breakpoints, $size);
+
+  @if $breakpoint-value {
+    $max-width-value: $breakpoint-value - 0.02px;
+
+    @media (max-width: $max-width-value) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$size}' not found in $breakpoints map. Valid keys are: #{map-keys($breakpoints)}";
+  }
+}
