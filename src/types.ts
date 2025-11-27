@@ -8,7 +8,8 @@ export type Pizza = {
 };
 
 export type OrderedPizza = {
-  id: number;
+  id: string;
+  imgSrc: string;
   title: string;
   doughType: string;
   size: number;

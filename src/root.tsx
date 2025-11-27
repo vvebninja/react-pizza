@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router';
-import { OrderContextProvider } from './contexts/order-context';
+import { CartContextProvider } from '@/contexts/cart-context';
 
 export const Root = () => {
   return (
-    <OrderContextProvider>
+    <CartContextProvider>
       <Outlet />
-    </OrderContextProvider>
+    </CartContextProvider>
   );
 };

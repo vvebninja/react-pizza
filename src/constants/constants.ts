@@ -1,13 +1,6 @@
-export const PIZZA_CATEGORIES = [
-  'All',
-  'Chees',
-  'Meat',
-  'Hot',
-  'Veggie',
-  'Barbeque',
-];
+export const PIZZA_CATEGORIES = ['All', 'Chees', 'Meat', 'Hot', 'Veggie', 'Barbeque'];
 
 export const routePaths = {
   HOME: '/',
-  CART: '/cart',
+  CART: '/cart-page',
 } as const;

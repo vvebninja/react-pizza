@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router';
-import CancelIcon from './cancel-icon.svg?react';
+import CancelIcon from '@/assets/icons/cancel-icon.svg?react';
 import styles from './search.module.scss';
 import { routePaths } from '@/constants/constants';
 

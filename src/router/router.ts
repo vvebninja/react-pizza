@@ -1,7 +1,7 @@
 import { routePaths } from '@/constants/constants.ts';
-import { Cart } from '@/pages/cart.tsx';
-import { Home } from '@/pages/home.tsx';
-import { Root } from '@/root';
+import { CartPage } from '@/pages/cart-page/cart-page.tsx';
+import { HomePage } from '@/pages/home-page/home-page.tsx';
+import { Root } from '@/root.tsx';
 import { createBrowserRouter } from 'react-router';
 
 export const router = createBrowserRouter([
@@ -11,11 +11,11 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home,
+        Component: HomePage,
       },
       {
         path: routePaths.CART,
-        Component: Cart,
+        Component: CartPage,
       },
     ],
   },
