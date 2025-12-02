@@ -1,9 +1,45 @@
-.content_wrap {
+.content {
   max-width: 56.25rem;
   margin-inline: auto;
 }
 
-.empty_cart_wrap {
+.ordered_pizza_list {
+  margin-bottom: 2.5rem;
+}
+
+.link_btn_wrap {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @include mix.media-up('md') {
+    justify-content: space-between;
+  }
+}
+
+.order_total_wrap, {
+  align-items: center;
+  display: flex;
+  color: var(--color-main-dark);
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+
+  @include mix.media-up('md') {
+    font-size: 1.5rem;
+  }
+}
+
+
+.total_quantity, .total_price {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.empty_cart {
   margin-inline: auto;
   padding-top: 4rem;
   width: fit-content;

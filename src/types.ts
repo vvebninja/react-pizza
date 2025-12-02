@@ -14,5 +14,6 @@ export type OrderedPizza = {
   doughType: string;
   size: number;
   price: number;
+  totalPrice: number;
   quantity: number;
 };

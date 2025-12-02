@@ -1,22 +1,13 @@
-import type { OrderedPizza, Pizza } from '@/types.ts';
+import type { Pizza } from '@/types.ts';
 import styles from './pizza-list.module.scss';
 import { PizzaCard } from './pizza-card.tsx';
 
-export const PizzaList = ({
-  pizzas,
-  onAddToCartClick,
-}: {
-  pizzas: Pizza[];
-  onAddToCartClick: (orderedPizza: Omit<OrderedPizza, 'quantity'>) => void;
-}) => {
+export const PizzaList = ({ pizza }: { pizza: Pizza[] }) => {
   return (
     <ul className={styles.list}>
-      {pizzas.map((p) => (
+      {pizza.map((p) => (
         <li key={p.id}>
-          <PizzaCard
-            {...p}
-            onClick={onAddToCartClick}
-          />
+          <PizzaCard {...p} />
         </li>
       ))}
     </ul>

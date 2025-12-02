@@ -1,14 +1,14 @@
 import styles from './ordered-pizza-card.module.scss';
-import RemoveIcon from '@/assets/icons/close-icon.svg?react';
-import MinusIcon from '@/assets/icons/minus-icon.svg?react';
-import PlusIcon from '@/assets/icons/plus-icon.svg?react';
-
 import type { OrderedPizza } from '@/types.ts';
+import { RemoveButton } from '@/components/ui/remove-button/remove-button.tsx';
+import { QuantityControl } from '@/components/ui/quantity-control/quantity-control.tsx';
+import { Price } from '@/components/ui/price/price';
+import { Image } from '@/components/ui/image/image';
 
 export const OrderedPizzaCard = ({
   id,
   title,
-  imgSrc,
+  imgSrc = '@/assets/img/pizza-img.jpg',
   doughType,
   size,
   quantity,
@@ -21,54 +21,35 @@ export const OrderedPizzaCard = ({
   onDecreaseQuantity: (id: OrderedPizza['id']) => void;
   onIncreaseQuantity: (id: OrderedPizza['id']) => void;
 }) => {
+  const totalPrice = price * quantity;
+
   return (
     <article className={styles.root}>
-      <div className={styles.info}>
-        <div className={styles.image}>
-          <img
-            src={imgSrc}
-            alt={title + ' pizza'}
-          />
-        </div>
-        <div>
-          <h3 className={styles.title}>{title}</h3>
-          <p className={styles.subtitle}>
-            <span>{doughType},</span>
-            <span>{size}</span>
-          </p>
-        </div>
-        <button
-          className={styles.remove_button}
-          type="button"
-          onClick={() => onRemove(id)}
-        >
-          <RemoveIcon />
-        </button>
+      <Image
+        src={imgSrc}
+        alt={title + ' pizza'}
+        width={80}
+      />
+      <div>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.subtitle}>
+          {doughType}, {size}
+        </p>
       </div>
+      <RemoveButton onRemove={() => onRemove(id)} />
 
-      <p className={styles.price}>
-        {price}
-        <span>&#8372;</span>
-      </p>
-
-      <div className={styles.quantity_control}>
-        <button
-          className={styles.decrease_button}
-          type="button"
-          onClick={() => onDecreaseQuantity(id)}
-          disabled={quantity === 0}
-        >
-          <MinusIcon />
-        </button>
-        <span>{quantity}</span>
-        <button
-          className={styles.increase_button}
-          type="button"
-          onClick={() => onIncreaseQuantity(id)}
-        >
-          <PlusIcon />
-        </button>
-      </div>
+      <Price
+        className={styles.price}
+        value={totalPrice}
+        size="md"
+        color="dark"
+      />
+      <QuantityControl
+        className={styles.counter}
+        quantity={quantity}
+        onDecrease={() => onDecreaseQuantity(id)}
+        onIncrease={() => onIncreaseQuantity(id)}
+      />
     </article>
   );
 };

@@ -1,34 +1,27 @@
-import type { OrderedPizza, Pizza } from '@/types.ts';
+import type { Pizza } from '@/types.ts';
+import PlusIcon from '@/assets/icons/plus-icon.svg?react';
 import clsx from 'clsx';
 import { useState } from 'react';
 import styles from './pizza-card.module.scss';
 import { useCartContext } from '@/contexts/cart-context/cart-context-provider.tsx';
+import { Price } from '@/components/ui/price/price.tsx';
+import { Image } from '@/components/ui/image/image';
 
-export const PizzaCard = ({
-  id,
-  imgSrc,
-  title,
-  doughTypes,
-  sizes,
-  price,
-  onClick,
-}: Pizza & {
-  onClick: (pizza: Omit<OrderedPizza, 'quantity'>) => void;
-}) => {
+export const PizzaCard = ({ id, imgSrc, title, doughTypes, sizes, price }: Pizza) => {
   const [selectedDoughType, setSelectedDoughType] = useState(doughTypes[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
-  const { items } = useCartContext();
+  const { items, addItem } = useCartContext();
 
-  const orderedArticleId = `${id}-${selectedDoughType}-${selectedSize}`;
+  const orderedPizzaId = `${id}-${selectedDoughType}-${selectedSize}`;
 
   const currentQuantity = items.reduce((acc, item) => {
-    const isMatch = item.id === orderedArticleId;
+    const isMatch = item.id === orderedPizzaId;
     return acc + (isMatch ? item.quantity : 0);
   }, 0);
 
   const handleAddClick = () => {
-    onClick({
-      id: orderedArticleId,
+    addItem({
+      id: orderedPizzaId,
       imgSrc,
       title,
       doughType: selectedDoughType,
@@ -39,14 +32,12 @@ export const PizzaCard = ({
 
   return (
     <div className={styles.pizza_item}>
-      <div className={styles.img_wrap}>
-        <img
-          className={styles.img}
-          src={imgSrc}
-          alt={title + ' pizza'}
-        />
-      </div>
-      <h2 className={styles.title}>{title}</h2>
+      <Image
+        src={imgSrc}
+        alt={title + ' pizza'}
+        height={280}
+        width={280}
+      />
 
       <div className={styles.options_wrap}>
         <ul className={styles.dough_type_list}>
@@ -79,19 +70,19 @@ export const PizzaCard = ({
       </div>
 
       <div className={styles.price_add_btn_wrap}>
-        <div className={styles.price}>
-          <span>from</span>
-          <span>{price}</span>
-          <span>&#8372;</span>
-        </div>
+        <Price
+          value={price}
+          size="md"
+          color="dark"
+        />
         <button
           className={styles.add_button}
           type="button"
           onClick={handleAddClick}
         >
-          <span>+</span>
+          <PlusIcon className={styles.add_button_icon} />
           <span>Add </span>
-          {Boolean(currentQuantity) && <span className={styles.quantity}>{currentQuantity}</span>}
+          {currentQuantity > 0 && <span className={styles.quantity}>{currentQuantity}</span>}
         </button>
       </div>
     </div>

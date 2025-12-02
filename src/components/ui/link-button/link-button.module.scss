@@ -1,0 +1,63 @@
+.button_base {
+  align-items: center;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  transition: all .25s ease-in-out;
+
+}
+
+.size-md {
+  font-size: 1rem;
+  height: 50px;
+  min-width: 150px;
+  padding-inline: 1.25rem;
+
+}
+
+.size-lg {
+  height: 55px;
+  min-width: 210px;
+  padding-inline: 0.5rem;
+}
+
+.variant-solid {
+  &.color-accent {
+    background-color: var(--color-accent);
+    color: var(--color-main-light);
+
+    &:hover, &.focus-visible {
+      background-color: color-mix(in srgb, var(--color-accent), black 10%);
+    }
+  }
+
+  &.color-dark {
+    background-color: var(--color-main-dark);
+    color: var(--color-main-light);
+
+    &:hover, &.focus-visible {
+      background-color: color-mix(in srgb, var(--color-main-dark), white 10%);
+    }
+  }
+
+  &:hover, &.focus-visible {
+    background-color: color-mix(in srgb, var(--color-accent), black 10%);
+  }
+}
+
+.variant-subtle {
+  background-color: transparent;
+  border: 1px solid var(--color-main-gray);
+  color: var(--color-main-gray);
+
+  &:hover, &.focus-visible {
+    border-color: color-mix(in srgb, var(--color-main-gray), black 10%);
+    color: color-mix(in srgb, var(--color-main-gray), black 10%);
+  }
+}
+
+

@@ -1,0 +1,28 @@
+.button {
+  align-items: center;
+  border: 2px solid currentColor;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-main-gray);
+  border-radius: 50%;
+  display: flex;
+  height: 1.5rem;
+  justify-content: center;
+  transition: all .25s;
+  width: 1.5rem;
+
+  &:hover, &:focus-visible {
+    color: color-mix(in srgb, var(--color-main-gray), black 10%);
+    border-color: color-mix(in srgb, var(--color-main-gray), black 10%)
+  }
+
+  @include mix.media-up('md') {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.icon {
+  fill: currentColor;
+}
+

@@ -1,7 +1,7 @@
 export const mockData = [
   {
     id: 1,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Cheeseburger',
     doughTypes: ['thin', 'traditional'],
     price: 420,
@@ -9,7 +9,7 @@ export const mockData = [
   },
   {
     id: 2,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Chicken',
     doughTypes: ['thin', 'traditional'],
     price: 320,
@@ -17,7 +17,7 @@ export const mockData = [
   },
   {
     id: 3,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Asian',
     doughTypes: ['thin', 'traditional'],
     price: 120,
@@ -25,7 +25,7 @@ export const mockData = [
   },
   {
     id: 4,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Cheese',
     doughTypes: ['thin', 'traditional'],
     price: 420,
@@ -33,7 +33,7 @@ export const mockData = [
   },
   {
     id: 11,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Cheeseburger',
     doughTypes: ['thin', 'traditional'],
     price: 420,
@@ -41,7 +41,7 @@ export const mockData = [
   },
   {
     id: 12,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Chicken',
     doughTypes: ['thin', 'traditional'],
     price: 320,
@@ -49,7 +49,7 @@ export const mockData = [
   },
   {
     id: 13,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Asian',
     doughTypes: ['thin', 'traditional'],
     price: 120,
@@ -57,7 +57,7 @@ export const mockData = [
   },
   {
     id: 14,
-    imgSrc: 'src/assets/home-page-img.png',
+    imgSrc: 'src/assets/img/pizza-img.png',
     title: 'Cheese',
     doughTypes: ['thin', 'traditional'],
     price: 420,

@@ -1,0 +1,41 @@
+.quantity_control {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  @include mix.media-up('md') {
+    margin-left: auto;
+  }
+}
+
+.decrease_button,
+.increase_button {
+  align-items: center;
+  border: 2px solid currentColor;
+  background-color: transparent;
+  color: var(--color-accent);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  height: 1.5rem;
+  justify-content: center;
+  transition: all .25s;
+  width: 1.5rem;
+
+
+  @include mix.media-up('md') {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &:hover, &:focus {
+    color: color-mix(in srgb, var(--color-accent), black 10%);
+  }
+}
+
+
+.decrease_button_icon,
+.increase_button_icon {
+  fill: currentColor;
+}

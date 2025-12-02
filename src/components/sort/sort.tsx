@@ -1,15 +1,18 @@
+import clsx from 'clsx';
 import styles from './sort.module.scss';
 
 export const Sort = ({
   value,
   onChange,
+  className,
 }: {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  className?: string;
 }) => {
   return (
     <select
-      className={styles.select}
+      className={clsx(styles.select, className)}
       name="sort"
       value={value}
       onChange={onChange}

@@ -1,16 +1,19 @@
 import { useLocation } from 'react-router';
-import CancelIcon from '@/assets/icons/cancel-icon.svg?react';
+import CancelIcon from '@/assets/icons/remove-icon.svg?react';
 import styles from './search.module.scss';
 import { routePaths } from '@/constants/constants';
+import clsx from 'clsx';
 
 export const Search = ({
   value,
   onChange,
   onClick,
+  className,
 }: {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
+  className?: string;
 }) => {
   const location = useLocation();
   const isHomePage = location.pathname === routePaths.HOME;
@@ -20,7 +23,7 @@ export const Search = ({
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={clsx(styles.wrapper, className)}>
       <input
         type="search"
         name="search"
