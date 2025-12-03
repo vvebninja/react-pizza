@@ -1,9 +1,9 @@
-import styles from './quantity-control.module.scss';
+import styles from './quantity-controls.module.scss';
 import PlusIcon from '@/assets/icons/plus-icon.svg?react';
 import MinusIcon from '@/assets/icons/minus-icon.svg?react';
 import clsx from 'clsx';
 
-export const QuantityControl = ({
+export const QuantityControls = ({
   quantity,
   onDecrease,
   onIncrease,
@@ -24,7 +24,7 @@ export const QuantityControl = ({
       >
         <MinusIcon className={styles.decrease_button_icon} />
       </button>
-      <span>{quantity}</span>
+      <span className={styles.text}>{quantity}</span>
       <button
         className={styles.increase_button}
         type="button"

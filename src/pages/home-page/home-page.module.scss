@@ -11,3 +11,12 @@
   }
 }
 
+.search {
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    margin-inline: auto;
+  }
+
+  @include mix.media-down('lg') {
+    order: 1;
+  }
+}

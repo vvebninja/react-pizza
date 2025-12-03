@@ -1,10 +1,19 @@
 import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg?react';
 import TrashBinIcon from '@/assets/icons/trash-bin-icon.svg?react';
 import styles from './cart-header.module.scss';
+import clsx from 'clsx';
 
-export const CartHeader = ({ title, onClear }: { title: string; onClear: () => void }) => {
+export const CartHeader = ({
+  title,
+  onClear,
+  className,
+}: {
+  title: string;
+  onClear: VoidFunction;
+  className?: string;
+}) => {
   return (
-    <header className={styles.cart_header}>
+    <header className={clsx(styles.cart_header, className)}>
       <h2 className={styles.cart_title}>
         <ShoppingCartIcon className={styles.shopping_cart_icon} />
         <span className={styles.cart_title_text}>{title}</span>

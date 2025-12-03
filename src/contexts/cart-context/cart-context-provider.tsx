@@ -30,11 +30,12 @@ export const CartContextProvider = ({ children }: { children: React.ReactElement
             ? {
                 ...item,
                 quantity: item.quantity + 1,
+                totalPrice: item.quantity * item.price,
               }
             : item,
         );
       } else {
-        return [...prev, { ...orderedPizza, quantity: 1 }];
+        return [...prev, { ...orderedPizza, quantity: 1, totalPrice: orderedPizza.price }];
       }
     });
   };
@@ -45,12 +46,26 @@ export const CartContextProvider = ({ children }: { children: React.ReactElement
 
   const increaseQuantityByOne = (id: OrderedPizza['id']) =>
     setItems(
-      items.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item)),
+      items.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item,
+      ),
     );
 
   const decreaseQuantityByOne = (id: OrderedPizza['id']) =>
     setItems(
-      items.map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item)),
+      items.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: item.quantity - 1,
+            }
+          : item,
+      ),
     );
 
   const value = {

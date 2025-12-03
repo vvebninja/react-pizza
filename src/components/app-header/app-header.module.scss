@@ -19,40 +19,7 @@
   }
 }
 
-//LOGO
-
-.logo_link {
-  align-items: center;
-  display: flex;
-  gap: 0.75rem;
-  text-decoration: none;
-  width: 16.5rem;
-}
-
-.logo_title {
-  color: var(--color-main-dark);
-  font-size: 1.5rem;
-  font-weight: 799;
-  text-transform: uppercase;
-}
-
-.logo_subtitle {
-  color: var(--color-main-gray);
-}
-
-.logo_icon {
-  height: 37px;
-  width: 37px;
-}
-
 .children {
-  @media (min-width: 48rem) and (max-width: 64rem) {
-    margin-inline: auto;
-  }
-
-  @include mix.media-down('lg') {
-    order: 1;
-  }
 }
 
 //HEADER CART BUTTON

@@ -1,7 +1,7 @@
 import styles from './ordered-pizza-card.module.scss';
 import type { OrderedPizza } from '@/types.ts';
 import { RemoveButton } from '@/components/ui/remove-button/remove-button.tsx';
-import { QuantityControl } from '@/components/ui/quantity-control/quantity-control.tsx';
+import { QuantityControls } from '@/components/ui/quantity-controls/quantity-controls.tsx';
 import { Price } from '@/components/ui/price/price';
 import { Image } from '@/components/ui/image/image';
 
@@ -25,18 +25,23 @@ export const OrderedPizzaCard = ({
 
   return (
     <article className={styles.root}>
-      <Image
-        src={imgSrc}
-        alt={title + ' pizza'}
-        width={80}
-      />
-      <div>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.subtitle}>
-          {doughType}, {size}
-        </p>
+      <div className={styles.info}>
+        <Image
+          src={imgSrc}
+          alt={title + ' pizza'}
+          width={80}
+        />
+        <div className={styles.card_text}>
+          <h3 className={styles.title}>{title}</h3>
+          <p className={styles.subtitle}>
+            {doughType}, {size}
+          </p>
+        </div>
       </div>
-      <RemoveButton onRemove={() => onRemove(id)} />
+      <RemoveButton
+        className={styles.remove_button}
+        onRemove={() => onRemove(id)}
+      />
 
       <Price
         className={styles.price}
@@ -44,8 +49,8 @@ export const OrderedPizzaCard = ({
         size="md"
         color="dark"
       />
-      <QuantityControl
-        className={styles.counter}
+      <QuantityControls
+        className={styles.quantity_controls}
         quantity={quantity}
         onDecrease={() => onDecreaseQuantity(id)}
         onIncrease={() => onIncreaseQuantity(id)}

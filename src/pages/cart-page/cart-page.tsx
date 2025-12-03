@@ -1,3 +1,4 @@
+import ArrowRightIcon from '@/assets/icons/arrow-right-icon.svg?react';
 import styles from './cart-page.module.scss';
 import { CartHeader } from './cart-header';
 import { AppHeader } from '@/components/app-header';
@@ -10,14 +11,15 @@ import { routePaths } from '@/constants/constants';
 
 export const CartPage = () => {
   const {
-    items: orderedPizza,
+    items: order,
     clearCart,
     removeItem,
     increaseQuantityByOne,
     decreaseQuantityByOne,
   } = useCartContext();
 
-  const isOrderEmpty = orderedPizza.length === 0;
+  const isOrderEmpty = order.length === 0;
+  const totalPrice = order.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className={styles.cart_page}>
@@ -25,33 +27,35 @@ export const CartPage = () => {
       {!isOrderEmpty ? (
         <div className={styles.content}>
           <CartHeader
+            className={styles.cart_header}
             title="Cart"
             onClear={clearCart}
           />
           <OrderedPizzaList
             className={styles.ordered_pizza_list}
-            orderedPizza={orderedPizza}
+            orderedPizza={order}
             onRemoveItem={removeItem}
             onDecreaseQuantity={decreaseQuantityByOne}
             onIncreaseQuantity={increaseQuantityByOne}
           />
           <div className={styles.order_total_wrap}>
-            <div className={styles.total_quantity}>Total ordered: 3</div>
+            <div className={styles.total_quantity}>Items: 3</div>
             <div className={styles.total_price}>
-              <span>Total: </span>
+              <span>Price: </span>
               <Price
-                value="22"
+                value={totalPrice}
                 size="md"
                 color="accent"
               />
             </div>
           </div>
-          <div className={styles.link_btn_wrap}>
+          <div className={styles.link_buttons_wrap}>
             <LinkButton
               to={routePaths.HOME}
               size="lg"
               variant="subtle"
             >
+              <ArrowRightIcon className={styles.arrow_right_icon} />
               Go back
             </LinkButton>
             <LinkButton
