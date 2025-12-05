@@ -35,9 +35,12 @@ export const PizzaCard = ({ id, imgSrc, title, doughTypes, sizes, price }: Pizza
       <Image
         src={imgSrc}
         alt={title + ' pizza'}
-        height={280}
-        width={280}
+        fit="cover"
+        height="280"
+        width="280"
       />
+
+      <h3 className={styles.title}>{title}</h3>
 
       <div className={styles.options_wrap}>
         <ul className={styles.dough_type_list}>

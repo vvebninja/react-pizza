@@ -23,9 +23,9 @@ export const LinkButton = ({
 }: LinkButtonProps) => {
   const buttonClasses = clsx(
     styles.button_base,
-    styles[`size-${size}`],
-    styles[`variant-${variant}`],
-    styles[`color-${color}`],
+    styles[`size_${size}`],
+    styles[`variant_${variant}`],
+    styles[`color_${color}`],
     className,
   );
 

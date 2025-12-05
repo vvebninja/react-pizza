@@ -31,3 +31,7 @@ export const OrderedPizzaList = ({
     </ul>
   );
 };
+
+export const LIST = ({ data, callback, className }) => {
+  return <ul>{callback}</ul>;
+};

@@ -1,4 +1,8 @@
-.image {
+.image_base {
   display: block;
   max-width: 100%;
+}
+
+.fit_cover {
+  object-fit: cover;
 }

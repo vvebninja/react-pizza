@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Cheeseburger",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  },
+  {
+    "id": 12,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Barbeque",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  },
+  {
+    "id": 13,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Napolitana",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  },
+  {
+    "id": 14,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Margarita",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  },
+  {
+    "id": 15,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Seafood",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  },
+  {
+    "id": 16,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Hot",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  },
+  {
+    "id": 17,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Cheese",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  },
+  {
+    "id": 18,
+    "imgSrc": "src/assets/img/pizza-img.png",
+    "title": "Asian",
+    "doughTypes": ["thin", "traditional"],
+    "price": 420,
+    "sizes": "[35, 45, 55]"
+  }
+]

@@ -2,25 +2,23 @@ import styles from './image.module.scss';
 import clsx from 'clsx';
 
 export const Image = ({
-  src,
   alt,
-  width,
-  height,
+  fit,
   className,
+  ...restProps
 }: {
-  src: string;
-  alt: string;
-  height?: number | string;
+  fit: 'cover' | 'contain';
   width: number | string;
+  alt: string;
   className?: string;
-}) => {
+} & React.ComponentProps<'img'>) => {
+  const classNames = clsx(styles.image_base, styles[`fit_${fit}`], className);
+
   return (
     <img
-      className={clsx(styles.image, className)}
-      src={src}
+      className={classNames}
+      {...restProps}
       alt={alt}
-      height={height}
-      width={width}
     />
   );
 };

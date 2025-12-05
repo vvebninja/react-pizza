@@ -11,7 +11,7 @@
 
 }
 
-.size-md {
+.size_md {
   font-size: 1rem;
   height: 50px;
   min-width: 150px;
@@ -19,14 +19,14 @@
 
 }
 
-.size-lg {
+.size_lg {
   height: 55px;
   min-width: 210px;
   padding-inline: 0.5rem;
 }
 
-.variant-solid {
-  &.color-accent {
+.variant_solid {
+  &.color_accent {
     background-color: var(--color-accent);
     color: var(--color-main-light);
 
@@ -35,7 +35,7 @@
     }
   }
 
-  &.color-dark {
+  &.color_dark {
     background-color: var(--color-main-dark);
     color: var(--color-main-light);
 
@@ -49,7 +49,7 @@
   }
 }
 
-.variant-subtle {
+.variant_subtle {
   background-color: transparent;
   border: 1px solid var(--color-main-gray);
   color: var(--color-main-gray);
