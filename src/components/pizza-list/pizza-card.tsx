@@ -38,6 +38,7 @@ export const PizzaCard = ({ id, imgSrc, title, doughTypes, sizes, price }: Pizza
         fit="cover"
         height="280"
         width="280"
+        loading="lazy"
       />
 
       <h3 className={styles.title}>{title}</h3>

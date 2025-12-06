@@ -4,6 +4,7 @@ import { RemoveButton } from '@/components/ui/remove-button/remove-button.tsx';
 import { QuantityControls } from '@/components/ui/quantity-controls/quantity-controls.tsx';
 import { Price } from '@/components/ui/price/price';
 import { Image } from '@/components/ui/image/image';
+import { useCartContext } from '@/contexts/cart-context';
 
 export const OrderedPizzaCard = ({
   id,
@@ -13,14 +14,8 @@ export const OrderedPizzaCard = ({
   size,
   quantity,
   price,
-  onRemove,
-  onDecreaseQuantity,
-  onIncreaseQuantity,
-}: OrderedPizza & {
-  onRemove: (id: OrderedPizza['id']) => void;
-  onDecreaseQuantity: (id: OrderedPizza['id']) => void;
-  onIncreaseQuantity: (id: OrderedPizza['id']) => void;
-}) => {
+}: OrderedPizza & {}) => {
+  const { increaseQuantityByOne, decreaseQuantityByOne, removeItem } = useCartContext();
   const totalPrice = price * quantity;
 
   return (
@@ -30,6 +25,7 @@ export const OrderedPizzaCard = ({
           src={imgSrc}
           alt={title + ' pizza'}
           width={80}
+          fit="cover"
         />
         <div className={styles.card_text}>
           <h3 className={styles.title}>{title}</h3>
@@ -40,7 +36,7 @@ export const OrderedPizzaCard = ({
       </div>
       <RemoveButton
         className={styles.remove_button}
-        onRemove={() => onRemove(id)}
+        onRemove={() => removeItem(id)}
       />
 
       <Price
@@ -52,8 +48,8 @@ export const OrderedPizzaCard = ({
       <QuantityControls
         className={styles.quantity_controls}
         quantity={quantity}
-        onDecrease={() => onDecreaseQuantity(id)}
-        onIncrease={() => onIncreaseQuantity(id)}
+        onDecrease={() => decreaseQuantityByOne(id)}
+        onIncrease={() => increaseQuantityByOne(id)}
       />
     </article>
   );

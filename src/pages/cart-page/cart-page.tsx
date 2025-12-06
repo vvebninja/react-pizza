@@ -10,36 +10,24 @@ import { LinkButton } from '@/components/ui/link-button/link-button';
 import { routePaths } from '@/constants/constants';
 
 export const CartPage = () => {
-  const {
-    items: order,
-    clearCart,
-    removeItem,
-    increaseQuantityByOne,
-    decreaseQuantityByOne,
-  } = useCartContext();
+  const { items } = useCartContext();
 
-  const isOrderEmpty = order.length === 0;
-  const totalPrice = order.reduce((total, item) => total + item.price * item.quantity, 0);
+  const isCartEmpty = items.length === 0;
+  const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className={styles.cart_page}>
       <AppHeader />
-      {!isOrderEmpty ? (
+      {!isCartEmpty ? (
         <div className={styles.content}>
           <CartHeader
             className={styles.cart_header}
             title="Cart"
-            onClear={clearCart}
           />
-          <OrderedPizzaList
-            className={styles.ordered_pizza_list}
-            orderedPizza={order}
-            onRemoveItem={removeItem}
-            onDecreaseQuantity={decreaseQuantityByOne}
-            onIncreaseQuantity={increaseQuantityByOne}
-          />
+          <OrderedPizzaList className={styles.ordered_pizza_list} />
           <div className={styles.order_total_wrap}>
-            <div className={styles.total_quantity}>Items: 3</div>
+            <div className={styles.total_quantity}>Items: {totalItems}</div>
             <div className={styles.total_price}>
               <span>Price: </span>
               <Price

@@ -1,37 +1,18 @@
-import type { OrderedPizza } from '@/types.ts';
 import styles from './ordered-pizza-list.module.scss';
 import { OrderedPizzaCard } from './ordered-pizza-card';
 import clsx from 'clsx';
+import { useCartContext } from '@/contexts/cart-context';
 
-export const OrderedPizzaList = ({
-  orderedPizza,
-  onRemoveItem,
-  onDecreaseQuantity,
-  onIncreaseQuantity,
-  className,
-}: {
-  orderedPizza: OrderedPizza[];
-  onRemoveItem: (id: OrderedPizza['id']) => void;
-  onDecreaseQuantity: (id: OrderedPizza['id']) => void;
-  onIncreaseQuantity: (id: OrderedPizza['id']) => void;
-  className?: string;
-}) => {
+export const OrderedPizzaList = ({ className }: { className?: string }) => {
+  const { items: orderedPizza } = useCartContext();
+
   return (
     <ul className={clsx(styles.list, className)}>
       {orderedPizza.map((item) => (
         <li key={item.id}>
-          <OrderedPizzaCard
-            {...item}
-            onRemove={onRemoveItem}
-            onIncreaseQuantity={onIncreaseQuantity}
-            onDecreaseQuantity={onDecreaseQuantity}
-          />
+          <OrderedPizzaCard {...item} />
         </li>
       ))}
     </ul>
   );
-};
-
-export const LIST = ({ data, callback, className }) => {
-  return <ul>{callback}</ul>;
 };

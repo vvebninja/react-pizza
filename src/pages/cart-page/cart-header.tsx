@@ -2,16 +2,11 @@ import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg?react';
 import TrashBinIcon from '@/assets/icons/trash-bin-icon.svg?react';
 import styles from './cart-header.module.scss';
 import clsx from 'clsx';
+import { useCartContext } from '@/contexts/cart-context';
 
-export const CartHeader = ({
-  title,
-  onClear,
-  className,
-}: {
-  title: string;
-  onClear: VoidFunction;
-  className?: string;
-}) => {
+export const CartHeader = ({ title, className }: { title: string; className?: string }) => {
+  const { clearCart } = useCartContext();
+
   return (
     <header className={clsx(styles.cart_header, className)}>
       <h2 className={styles.cart_title}>
@@ -22,7 +17,7 @@ export const CartHeader = ({
       <button
         className={styles.clear_cart_btn}
         type="button"
-        onClick={onClear}
+        onClick={() => clearCart()}
       >
         <TrashBinIcon className={styles.trash_bin_icon} />
         <span className={styles.clear_cart_btn_text}>Clear cart</span>
