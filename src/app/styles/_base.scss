@@ -1,0 +1,25 @@
+body {
+  font-family: 'Proxima Nova';
+  letter-spacing: var(--main-letter-spacing);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #ffdf8c;
+  color: var(--color-main-dark);
+
+  height: 100vh;
+  padding: var(--body-pd-block);
+}
+
+#root {
+  background-color: var(--color-main-light);
+  border-radius: 0.75rem;
+
+  height: 100%;
+  max-width: var(--root-width);
+  width: 100%;
+  padding-inline: var(--root-pd-inline);
+}

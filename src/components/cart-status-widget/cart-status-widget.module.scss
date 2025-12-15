@@ -1,0 +1,20 @@
+.cart_widget {
+  font-weight: 700;
+
+  &_amount {
+    margin-right: 2px;
+  }
+
+  &_divider {
+    background-color: #fff;
+    height: 25px;
+    margin-inline: 1rem;
+    width: 1px;
+  }
+
+  &_icon {
+    height: 1rem;
+    margin-right: 0.25rem;
+    width: 1rem;
+  }
+}
