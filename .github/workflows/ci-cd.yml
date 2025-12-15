@@ -32,6 +32,15 @@ jobs:
           version: 8
           run_install: true
 
+      - name: 📦 Install project dependencies (explicitly)
+        run: pnpm install
+
+      - name:
+          🔍 Debug: Check pnpm path
+        run: |
+          echo "PATH: $PATH"
+          which pnpm || echo "pnpm not found in PATH"
+
       - name: 🔎 Run Linting Check
         run: pnpm run lint
 
