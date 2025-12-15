@@ -1,3 +1,5 @@
+# .github/workflows/ci-cd.yml
+
 name: React Pizza CI/CD Pipeline
 
 on:
@@ -20,18 +22,34 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # 1. Setup Node.js Environment (NO CACHING HERE)
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-          cache-dependency-path: pnpm-lock.yaml
 
-      - name: Install pnpm & Dependencies
+      # 2. Setup pnpm binary (needed for the next step)
+      - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 8
-          run_install: true
+
+      # 3. CRITICAL FIX: Custom Caching for pnpm (Separate Action)
+      - name: Restore pnpm cache
+        uses: actions/cache@v4
+        id: pnpm-cache
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      # 4. Install Dependencies
+      - name: Install Dependencies
+        # Only run installation if cache missed or lock file changed
+        run: pnpm install --no-frozen-lockfile # Use --no-frozen-lockfile for the first run if needed
+        # You can switch back to 'pnpm install --frozen-lockfile' after the first successful run
+        # that generates the cache, but let's keep it simple for now.
 
       - name: Run Linting Check
         run: pnpm run lint
@@ -47,6 +65,7 @@ jobs:
           retention-days: 5
 
   deploy:
+    # ... (deploy job remains the same, not repeated for brevity)
     name: Deploy to GitHub Pages
     needs: ci_checks
     runs-on: ubuntu-latest
