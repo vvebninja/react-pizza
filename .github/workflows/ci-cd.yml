@@ -22,34 +22,34 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 1. Setup Node.js Environment (NO CACHING HERE)
+      # 1. Setup Node.js (Vanilla - No caching, no magic)
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      # 2. Setup pnpm binary (needed for the next step)
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 8
+      # 2. Install pnpm manually via npm (The most reliable method)
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      # 3. CRITICAL FIX: Custom Caching for pnpm (Separate Action)
-      - name: Restore pnpm cache
+      # 3. Get pnpm store directory (Needed for caching)
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      # 4. Manual Cache (Completely separate from Node setup)
+      - name: Setup pnpm cache
         uses: actions/cache@v4
-        id: pnpm-cache
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-
+            ${{ runner.os }}-pnpm-store-
 
-      # 4. Install Dependencies
+      # 5. Install Dependencies
       - name: Install Dependencies
-        # Only run installation if cache missed or lock file changed
-        run: pnpm install --no-frozen-lockfile # Use --no-frozen-lockfile for the first run if needed
-        # You can switch back to 'pnpm install --frozen-lockfile' after the first successful run
-        # that generates the cache, but let's keep it simple for now.
+        run: pnpm install
 
       - name: Run Linting Check
         run: pnpm run lint
@@ -65,7 +65,6 @@ jobs:
           retention-days: 5
 
   deploy:
-    # ... (deploy job remains the same, not repeated for brevity)
     name: Deploy to GitHub Pages
     needs: ci_checks
     runs-on: ubuntu-latest
