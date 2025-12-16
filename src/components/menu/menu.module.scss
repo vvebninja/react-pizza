@@ -1,0 +1,16 @@
+@use '@/app/styles/mixins' as mixins;
+
+.menu {
+  padding-bottom: 5rem;
+
+  &_pizza {
+    display: grid;
+    grid-row-gap: 4rem;
+    justify-items: center;
+
+    @include mixins.mediaMin('md') {
+      grid-template-columns: repeat(auto-fit, 280px);
+      justify-content: space-between;
+    }
+  }
+}

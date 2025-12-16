@@ -7,6 +7,7 @@
   --root-width: 90rem;
   --header-pd-block: 1rem;
   --main-letter-spacin: 0.04em;
+  --root-min-height: calc(100vh - 3rem);
 }
 
 @include mixins.mediaMin('md') {
