@@ -6,8 +6,10 @@
 
   --color-accent: #fe5f1e;
   --color-main-dark: #2c2c2c;
+  --color-main-dark-rgb: 36, 41, 46;
   --color-main-light: #fff;
   --color-main-gray: #b6b6b6;
 
   --color-header-border: var(--color-gray-100);
+  --color-options-bg: rgba(var(--color-main-dark-rgb), 0.05);
 }
