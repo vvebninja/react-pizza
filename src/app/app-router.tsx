@@ -20,7 +20,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: '/react-pizza/',
+    basename: import.meta.env.BASE_URL,
   },
 );
 
