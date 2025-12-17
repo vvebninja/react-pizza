@@ -10,6 +10,7 @@ type PizzaCardProps = {
 
 export const PizzaCard = ({ pizza }: PizzaCardProps) => {
   const { imgSrc, title, doughTypes, sizes, price } = pizza;
+  const imgUrl = `${import.meta.env.BASE_URL}${imgSrc}`;
   const selectedDoughType = doughTypes[0];
   const selectedSize = sizes[0];
   const currentQuantity = 0;
@@ -18,7 +19,7 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
     <div className={css.pizza}>
       <img
         className={css.pizza_img}
-        src={imgSrc}
+        src={imgUrl}
         alt={title + ' pizza'}
         height="280"
         width="280"
