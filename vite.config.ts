@@ -5,7 +5,7 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/react-pizza/',
+  base: process.env.GITHUB_ACTIONS ? '/react-pizza/' : '/',
   plugins: [
     react({
       babel: {
