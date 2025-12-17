@@ -10,7 +10,7 @@ type PizzaCardProps = {
 
 export const PizzaCard = ({ pizza }: PizzaCardProps) => {
   const { imgSrc, title, doughTypes, sizes, price } = pizza;
-  const imgUrl = `${import.meta.env.BASE_URL}${imgSrc}`;
+  const imgUrl = `${import.meta.env.BASE_URL}/${imgSrc}`.replace(/\/+/g, '/');
   const selectedDoughType = doughTypes[0];
   const selectedSize = sizes[0];
   const currentQuantity = 0;
