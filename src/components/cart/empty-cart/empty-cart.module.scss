@@ -1,0 +1,36 @@
+@use '@/app/styles/mixins' as mixins;
+
+.empty_cart {
+  display: grid;
+  justify-items: center;
+  max-width: 37.5rem;
+  width: 100%;
+
+  &_title {
+    margin: 0 0 0.75rem;
+    font-size: 2rem;
+  }
+
+  &_subtitle {
+    margin: 0 0 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    color: var(--color-main-gray);
+  }
+
+  &_line_breake {
+    display: none;
+
+    @include mixins.mediaMin('md') {
+      display: inline;
+    }
+  }
+
+  &_img {
+    max-width: 18.75rem;
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+}
