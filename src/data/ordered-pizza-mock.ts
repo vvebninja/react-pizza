@@ -1,0 +1,38 @@
+export const orderedPizzaMock = [
+  {
+    id: 12,
+    imgSrc: '/pizzas/placeholder-pizza-img.png',
+    title: 'Cheeseburger',
+    doughType: 'traditional',
+    price: 420,
+    size: 45,
+    quantity: 5,
+  },
+  {
+    id: 13,
+    imgSrc: '/pizzas/placeholder-pizza-img.png',
+    title: 'Cheeseburger',
+    doughType: 'traditional',
+    price: 420,
+    size: 45,
+    quantity: 3,
+  },
+  {
+    id: 14,
+    imgSrc: '/pizzas/placeholder-pizza-img.png',
+    title: 'Cheeseburger',
+    doughType: 'traditional',
+    price: 12330,
+    size: 55,
+    quantity: 12,
+  },
+  {
+    id: 15,
+    imgSrc: '/pizzas/placeholder-pizza-img.png',
+    title: 'Cheeseburger',
+    doughType: 'traditional',
+    price: 220,
+    size: 35,
+    quantity: 2228,
+  },
+];

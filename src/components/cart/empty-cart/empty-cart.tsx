@@ -14,7 +14,7 @@ export const EmptyCart: FC<EmptyCartProps> = ({ className }) => {
     <section className={clsx(css.empty_cart, className)}>
       <h2 className={css.empty_cart_title}>Cart is empty 😕</h2>
       <p className={css.empty_cart_subtitle}>
-        It looks like you don't have any pizza orders yet.{' '}
+        It looks like you don't have any pizza orders yet.
         <br className={css.empty_cart_line_breake} />
         To get started, just head over to the homepage!
       </p>

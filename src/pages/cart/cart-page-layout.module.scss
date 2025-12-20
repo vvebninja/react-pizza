@@ -1,0 +1,25 @@
+@use '@/app/styles/mixins' as mixins;
+
+.layout_wrap {
+  --page-padding-block: 3rem;
+  --page-height: #{calc(100vh - var(--body-padding) - var(--page-padding-block))};
+
+  min-height: var(--page-height);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart_page {
+  flex: 1;
+  padding: var(--page-padding-block) 0 5rem;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin-inline: auto;
+
+  @include mixins.mediaMin('md'){
+    width: fit-content;
+  }
+}

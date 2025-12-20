@@ -1,7 +1,7 @@
 @use '@/app/styles/mixins' as mixins;
 
 .header {
-  border-bottom: 1px solid var(--color-header-border);
+  border-bottom: 1px solid var(--color-main-border);
   padding-block: var(--header-pd-block);
 
   &_home {

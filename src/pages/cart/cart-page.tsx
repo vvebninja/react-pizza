@@ -1,17 +1,34 @@
 import { EmptyCart } from '@/components/cart';
-import css from './cart-page.module.scss';
-import { AppHeader } from '@/components/app-header';
+import { CartHeader } from '@/components/cart/cart-header';
+import { OrderedPizzaList } from '@/components/cart/ordered-pizza';
+import { CartPageLayout } from './cart-page-layout';
+import { CartFooter } from '@/components/cart/cart-footer';
+import { useState } from 'react';
 
 const CartPage = () => {
-  const isCartEmpty = true;
+  const [isCartEmpty, setIsCartEmpty] = useState(false);
+
+  const handleClearCart = () => {
+    setIsCartEmpty(true);
+  };
+
+  if (isCartEmpty) {
+    return (
+      <CartPageLayout>
+        <EmptyCart />
+      </CartPageLayout>
+    );
+  }
 
   return (
-    <>
-      <AppHeader />
-      <div className={css.cart_page}>
-        {isCartEmpty && <EmptyCart className={css.cart_page_empty} />}
-      </div>
-    </>
+    <CartPageLayout>
+      <CartHeader
+        title="Cart"
+        onClear={handleClearCart}
+      />
+      <OrderedPizzaList />
+      <CartFooter />
+    </CartPageLayout>
   );
 };
 
