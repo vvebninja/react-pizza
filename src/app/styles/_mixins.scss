@@ -22,8 +22,8 @@ $breakpoints: (
 @mixin mediaMax($size) {
   $breakpoint: map.get($breakpoints, $size);
 
-  @if $breakpoint-value {
-    $max-width-value: $breakpoint - 0.01px;
+  @if $breakpoint {
+    $max-width-value: $breakpoint - 0.02px;
 
     @media (max-width: $max-width-value) {
       @content;

@@ -1,8 +1,7 @@
 @use './_mixins.scss' as mixins;
 
 :root {
-  --body-pd-block: 0.5rem;
-  --body-pd-inline: 0.5rem;
+  --body-padding: 0.5rem;
   --root-pd-inline: 0.5rem;
   --root-width: 90rem;
   --header-pd-block: 1rem;
@@ -11,8 +10,7 @@
 
 @include mixins.mediaMin('md') {
   :root {
-    --body-pd-block: 1.5rem;
-    --body-pd-inline: 1.5rem;
+    --body-padding: 1.5rem;
     --root-pd-inline: 1.3rem;
     --header-pd-block: 1.5rem;
   }
@@ -20,7 +18,7 @@
 
 @include mixins.mediaMin('xl') {
   :root {
-    --body-pd-inline: 3rem;
+    --body-padding: 2rem;
     --root-pd-inline: 2rem;
     --header-pd-block: 2rem;
   }
