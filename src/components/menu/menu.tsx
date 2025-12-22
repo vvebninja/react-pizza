@@ -1,8 +1,11 @@
-import pizzas from '@/data/mock-pizza.json';
 import css from './menu.module.scss';
 import { PizzaCard } from '../pizza-card';
+import { useLoaderData } from 'react-router';
+import type { Pizza } from '@/data/types';
 
 export const Menu = () => {
+  const { pizzas } = useLoaderData() as { pizzas: Pizza[] };
+
   return (
     <div className={css.menu}>
       <h1 className={css.menu_title}>Menu</h1>
