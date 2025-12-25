@@ -19,7 +19,7 @@
   width: 100%;
   margin-inline: auto;
 
-  @include mixins.mediaMin('md'){
+  @include mixins.mediaMin('md') {
     width: fit-content;
   }
 }
