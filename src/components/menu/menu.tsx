@@ -1,4 +1,5 @@
 import type { Pizza } from '@/data/types';
+
 import clsx from 'clsx';
 import { useLoaderData, useNavigation } from 'react-router';
 import { PizzaCard } from '../pizza-card';
