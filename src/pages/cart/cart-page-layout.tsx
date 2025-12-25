@@ -7,9 +7,7 @@ export const CartPageLayout = ({ children }: { children: ReactNode }) => {
     <div className={css.layout_wrap}>
       <AppHeader />
       <main className={css.cart_page}>
-        <div className={css.container}>
-        {children}
-        </div>
+        <div className={css.container}>{children}</div>
       </main>
     </div>
   );

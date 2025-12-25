@@ -1,16 +1,25 @@
-import { getPizzas } from '@/api/pizza';
+import { getQueryPizzas, getPizzas } from '@/api/pizza';
+import type { LoaderFunctionArgs } from 'react-router';
 
-const homeLoader = async () => {
+const homeLoader = async ({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  const title = url.searchParams.get('title');
+
   try {
-    const pizzas = await getPizzas();
-    console.log('pizza', pizzas);
+    const pizzas = title ? await getQueryPizzas(title) : await getPizzas();
     return { pizzas };
   } catch (error) {
-    console.error('Failed to fetch pizzas: ', error);
-    throw new Response(JSON.stringify({ message: 'Could not fetch pizzas at this time' }), {
-      status: 500,
-      headers: { 'Content-Type': 'aplication/json' },
-    });
+    if (error instanceof Response) throw error;
+
+    throw new Response(
+      JSON.stringify({
+        message: 'Could not fetch pizzas',
+      }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
   }
 };
 

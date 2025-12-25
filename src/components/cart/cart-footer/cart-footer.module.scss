@@ -41,7 +41,7 @@
     gap: 1rem;
 
     @include mixins.mediaMin('md') {
-      flex-direction: row; 
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
     }
