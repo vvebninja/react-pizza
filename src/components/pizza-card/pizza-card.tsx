@@ -1,6 +1,8 @@
+import type { Pizza } from '@/api/pizza';
 import PlusIcon from '@/assets/icons/plus-icon.svg?react';
-import type { Pizza } from '@/data/types';
+import { useCartContext } from '@/contexts/cart';
 import clsx from 'clsx';
+import { useState } from 'react';
 import { Price } from '../ui/price/price';
 import css from './pizza-card.module.scss';
 
@@ -9,10 +11,31 @@ type PizzaCardProps = {
 };
 
 export const PizzaCard = ({ pizza }: PizzaCardProps) => {
-  const { imgSrc, title, doughTypes, sizes, price } = pizza;
-  const selectedDoughType = doughTypes[0];
-  const selectedSize = sizes[0];
-  const currentQuantity = 0;
+  const { id, imgSrc, title, doughTypes, sizes, price } = pizza;
+  const [selectedDoughType, setSelectedDoughType] = useState(doughTypes[0]);
+  const [selectedSize, setSelectedSize] = useState(sizes[0]);
+  const { items: orderedPizza, addItem } = useCartContext();
+
+  const orderedPizzaId = [id, selectedDoughType, selectedSize].join('-');
+  const currentQuantity = orderedPizza.find(pizza => pizza.id === orderedPizzaId)?.quantity;
+
+  const handleDoughTypeClick = (type: string) => {
+    setSelectedDoughType(type);
+  };
+
+  const handleSizeClick = (size: number) => {
+    setSelectedSize(size);
+  };
+
+  const handleAddPizzaClick = () => {
+    addItem({
+      ...pizza,
+      doughType: selectedDoughType,
+      size: selectedSize,
+      id: orderedPizzaId,
+      quantity: 1,
+    });
+  };
 
   return (
     <div className={css.pizza}>
@@ -36,6 +59,7 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
                   [css.is_active]: selectedDoughType === doughType,
                 })}
                 type="button"
+                onClick={() => handleDoughTypeClick(doughType)}
               >
                 {doughType}
               </button>
@@ -45,15 +69,18 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
 
         <ul className={css.pizza_options_group}>
           {sizes.map(size => (
-            <button
-              className={clsx(css.pizza_option_size_btn, {
-                [css.is_active]: size === selectedSize,
-              })}
-              type="button"
-            >
-              <span>{size}</span>
-              <span>cm.</span>
-            </button>
+            <li key={size}>
+              <button
+                className={clsx(css.pizza_option_size_btn, {
+                  [css.is_active]: size === selectedSize,
+                })}
+                type="button"
+                onClick={() => handleSizeClick(size)}
+              >
+                <span>{size}</span>
+                <span>cm.</span>
+              </button>
+            </li>
           ))}
         </ul>
       </div>
@@ -67,10 +94,11 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
         <button
           className={css.pizza_add_btn}
           type="button"
+          onClick={handleAddPizzaClick}
         >
           <PlusIcon className={css.pizza_add_icon} />
           <span>Add </span>
-          {currentQuantity > 0 && <span className={css.pizza_quantity}>{currentQuantity}</span>}
+          {currentQuantity && <span className={css.pizza_quantity}>{currentQuantity}</span>}
         </button>
       </div>
     </div>

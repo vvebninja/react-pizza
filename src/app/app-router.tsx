@@ -2,12 +2,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import { routePaths } from '@/constants';
 import { App } from './app';
 import { ErrorDisplay } from '@/components/ui/error-display/error-display';
+import { CartContextProvider } from '@/contexts/cart';
 
 const router = createBrowserRouter(
   [
     {
       path: routePaths.HOME,
-      element: <App />,
+      element: (
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
+      ),
       errorElement: <ErrorDisplay />,
       children: [
         {

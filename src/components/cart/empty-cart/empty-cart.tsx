@@ -1,4 +1,5 @@
-import ShoppingCart from '@/assets/img/shopping-cart-img.svg?react';
+import ShoppingCartIcon from '@/assets/img/shopping-cart-img.svg?react';
+import ArrowLeftIcon from '@/assets/icons/arrow-left-icon.svg?react';
 import css from './empty-cart.module.scss';
 import { routePaths } from '@/constants/constants.ts';
 import { LinkButton } from '@/components/ui/link-button/link-button';
@@ -18,13 +19,15 @@ export const EmptyCart: FC<EmptyCartProps> = ({ className }) => {
         <br className={css.empty_cart_line_breake} />
         To get started, just head over to the homepage!
       </p>
-      <ShoppingCart className={css.empty_cart_img} />
+      <ShoppingCartIcon className={css.empty_cart_img} />
       <LinkButton
+        className={css.empty_cart_back}
         size="lg"
         variant="solid"
         color="dark"
         to={routePaths.HOME}
       >
+        <ArrowLeftIcon />
         Go back
       </LinkButton>
     </section>

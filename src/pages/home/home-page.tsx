@@ -5,6 +5,7 @@ import { Search } from '@/components/search';
 import { Menu } from '@/components/menu';
 
 const HomePage = () => {
+  console.log('home page');
   return (
     <div className={css.home}>
       <AppHeader

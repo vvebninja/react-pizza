@@ -3,10 +3,10 @@ import { routePaths } from '@/constants';
 import css from './cart-status-widget.module.scss';
 import { LinkButton } from '../ui/link-button/link-button';
 import { Price } from '../ui/price/price';
+import { useCartContext } from '@/contexts/cart';
 
 export const CartStatusWidget = () => {
-  const totalItems = 0;
-  const totalPrice = 400;
+  const { totalPrice, totalItems } = useCartContext();
 
   return (
     <LinkButton

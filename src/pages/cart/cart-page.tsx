@@ -3,16 +3,15 @@ import { CartHeader } from '@/components/cart/cart-header';
 import { OrderedPizzaList } from '@/components/cart/ordered-pizza';
 import { CartPageLayout } from './cart-page-layout';
 import { CartFooter } from '@/components/cart/cart-footer';
-import { useState } from 'react';
+import { useCartContext } from '@/contexts/cart';
+import css from './cart-page-layout.module.scss';
 
 const CartPage = () => {
-  const [isCartEmpty, setIsCartEmpty] = useState(false);
+  const { items: orderedPizza, clearCart } = useCartContext();
+  console.log('cart page');
+  const handleClearCart = () => clearCart();
 
-  const handleClearCart = () => {
-    setIsCartEmpty(true);
-  };
-
-  if (isCartEmpty) {
+  if (!orderedPizza.length) {
     return (
       <CartPageLayout>
         <EmptyCart />
@@ -27,7 +26,7 @@ const CartPage = () => {
         onClear={handleClearCart}
       />
       <OrderedPizzaList />
-      <CartFooter />
+      <CartFooter className={css.cart_footer} />
     </CartPageLayout>
   );
 };
