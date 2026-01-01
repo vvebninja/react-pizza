@@ -1,8 +1,6 @@
 @use '@/app/styles/mixins' as mixins;
 
 .cart_footer {
-  margin-top: 2rem;
-  padding-top: 2rem;
 
   &_summary {
     display: flex;

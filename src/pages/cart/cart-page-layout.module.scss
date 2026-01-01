@@ -10,16 +10,22 @@
 }
 
 .cart_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex: 1;
-  padding: var(--page-padding-block) 0 5rem;
-}
 
-.container {
   max-width: 800px;
   width: 100%;
   margin-inline: auto;
 
   @include mixins.mediaMin('md') {
     width: fit-content;
+    padding-bottom: 2rem;
   }
+}
+
+.cart_footer {
+  margin-top: auto;
+  padding-top: 2rem;
 }

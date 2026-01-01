@@ -3,19 +3,27 @@ import { Price } from '@/components/ui/price/price';
 import { routePaths } from '@/constants';
 import css from './cart-footer.module.scss';
 import ArrowLeftIcon from '@/assets/icons/arrow-left-icon.svg?react';
+import { useCartContext } from '@/contexts/cart';
+import clsx from 'clsx';
 
-export const CartFooter = () => {
+type CartFooterProps = {
+  className?: string;
+};
+
+export const CartFooter = ({ className }: CartFooterProps) => {
+  const { totalItems, totalPrice } = useCartContext();
+
   return (
-    <footer className={css.cart_footer}>
+    <footer className={clsx(css.cart_footer, className)}>
       <div className={css.cart_footer_summary}>
         <div className={css.cart_footer_total}>
           <span>Pizzas:</span>
-          <strong className={css.cart_footer_count}>3</strong>
+          <strong className={css.cart_footer_count}>{totalItems}</strong>
         </div>
         <div className={css.cart_footer_total}>
           <span className={css.total_price_label}>Order total:</span>
           <Price
-            value={1250}
+            value={totalPrice}
             size="lg"
             className={css.cart_footer_price}
           />

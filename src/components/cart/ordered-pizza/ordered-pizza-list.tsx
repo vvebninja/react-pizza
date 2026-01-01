@@ -1,10 +1,12 @@
-import { orderedPizzaMock } from '@/data/ordered-pizza-mock';
-import { OrderedPizzaCard } from './ordered-pizza-card';
+import { OrderedPizzaCard } from './ordered-pizza-card/ordered-pizza-card';
+import { useCartContext } from '@/contexts/cart';
 
 export const OrderedPizzaList = () => {
+  const { items: orderedPizza } = useCartContext();
+
   return (
     <ul>
-      {orderedPizzaMock.map(item => (
+      {orderedPizza.map(item => (
         <li key={item.id}>
           <OrderedPizzaCard pizza={item} />
         </li>

@@ -1,6 +1,14 @@
 import { PIZZA_URL } from '@/constants';
-import type { Pizza } from '@/data/types';
 import axios, { isAxiosError } from 'axios';
+
+export type Pizza = {
+  id: number | string;
+  imgSrc: string;
+  title: string;
+  doughTypes: string[];
+  sizes: number[];
+  price: number;
+};
 
 export const getPizzas = async (): Promise<Pizza[]> => {
   const { data } = await axios<Pizza[]>(PIZZA_URL);
