@@ -1,0 +1,7 @@
+@use '@/app/styles/mixins' as mixins;
+
+.category_list {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}

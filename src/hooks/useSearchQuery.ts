@@ -8,7 +8,6 @@ export const useSearchQuery = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // We store the initial value from the URL to compare later
   const initialUrlQuery = useRef(searchParams.get('title') ?? '');
   const [query, setQuery] = useState<string>(initialUrlQuery.current);
 

@@ -1,10 +1,10 @@
-import { EmptyCart } from '@/components/cart';
 import { CartHeader } from '@/components/cart/cart-header';
 import { OrderedPizzaList } from '@/components/cart/ordered-pizza';
 import { CartPageLayout } from './cart-page-layout';
 import { CartFooter } from '@/components/cart/cart-footer';
 import { useCartContext } from '@/contexts/cart';
 import css from './cart-page-layout.module.scss';
+import { EmptyCart } from '@/components/cart/empty-cart';
 
 const CartPage = () => {
   const { items: orderedPizza, clearCart } = useCartContext();
