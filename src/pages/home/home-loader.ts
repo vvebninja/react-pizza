@@ -1,12 +1,22 @@
-import { getQueryPizzas, getPizzas } from '@/api/pizza';
+import { getPizzasByQuery, getPizzas, getPizzasByCategory } from '@/api/pizza';
 import type { LoaderFunctionArgs } from 'react-router';
 
 const homeLoader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const title = url.searchParams.get('title');
+  const category = url.searchParams.get('category');
 
   try {
-    const pizzas = title ? await getQueryPizzas(title) : await getPizzas();
+    let pizzas;
+
+    if (title) {
+      pizzas = await getPizzasByQuery(title);
+    } else if (category) {
+      pizzas = await getPizzasByCategory(category);
+    } else {
+      pizzas = await getPizzas();
+    }
+
     return { pizzas };
   } catch (error) {
     if (error instanceof Response) throw error;

@@ -1,5 +1,13 @@
 export const PIZZA_CATEGORIES = ['All', 'Grilled', 'Meat', 'Hot', 'Veggie', 'Barbeque'];
 
+export const CATEGORY_LOOKUP = PIZZA_CATEGORIES.reduce(
+  (acc, cat) => {
+    acc[cat.toLowerCase()] = cat;
+    return acc;
+  },
+  {} as Record<string, string>,
+);
+
 export const DEFAULT_CATEGORY = PIZZA_CATEGORIES[0];
 
 export const SORT_OPTIONS = ['price', 'popularity'];

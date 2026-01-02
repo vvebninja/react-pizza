@@ -15,9 +15,22 @@ export const getPizzas = async (): Promise<Pizza[]> => {
   return data;
 };
 
-export const getQueryPizzas = async (query: string): Promise<Pizza[]> => {
+export const getPizzasByQuery = async (query: string): Promise<Pizza[]> => {
   try {
     const { data } = await axios<Pizza[]>(PIZZA_URL, { params: { title: query } });
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response?.status === 404) {
+      return [];
+    }
+
+    throw error;
+  }
+};
+
+export const getPizzasByCategory = async (category: string): Promise<Pizza[]> => {
+  try {
+    const { data } = await axios(PIZZA_URL, { params: { category } });
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response?.status === 404) {

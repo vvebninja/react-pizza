@@ -1,7 +1,11 @@
 @use '@/app/styles/mixins' as mixins;
 
 .menu {
-  padding-bottom: 5rem;
+  padding: 2rem 0 5rem;
+
+  &_title {
+    margin: 0 0 1rem;
+  }
 
   &_pizza {
     display: grid;

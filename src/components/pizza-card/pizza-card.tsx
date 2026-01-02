@@ -46,6 +46,7 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
         height="280"
         width="280"
         loading="lazy"
+        decoding="sync"
       />
 
       <h3 className={css.pizza_title}>{title}</h3>
