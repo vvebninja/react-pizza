@@ -3,7 +3,7 @@ import RemoveIcon from '@/assets/icons/remove-icon.svg?react';
 import MinusIcon from '@/assets/icons/minus-icon.svg?react';
 import PlusIcon from '@/assets/icons/plus-icon.svg?react';
 import { Price } from '@/components/ui/price/price';
-import type { Pizza } from '@/api/pizza';
+import type { Pizza } from '@/api/fetchPizzas';
 import { useCartContext } from '@/contexts/cart';
 
 export type OrderedPizza = Omit<Pizza, 'doughTypes' | 'sizes'> & {

@@ -1,22 +1,25 @@
 import { AppHeader } from '@/components/app-header';
-import { Search } from '@/components/search';
-import { Menu } from '@/components/menu';
 import { CartStatusWidget } from '@/components/cart/cart-status-widget';
-import { CategoryList } from '@/components/categories';
+import { Menu } from '@/components/menu';
+import { Search } from '@/components/search';
+import { Sort } from '@/components/sort';
 import { HomePageLayout } from './home-page-layout';
-import css from './home-page-layout.module.scss';
+import { CategoriesList } from '@/components/categories';
 
 const HomePage = () => {
   return (
-    <HomePageLayout>
-      <AppHeader
-        variant="home"
-        cartStatusWidget={<CartStatusWidget />}
-        search={<Search />}
-      />
-      <CategoryList className={css.categories} />
-      <Menu />
-    </HomePageLayout>
+    <HomePageLayout
+      header={
+        <AppHeader
+          variant="home"
+          cartStatusWidget={<CartStatusWidget />}
+          search={<Search />}
+        />
+      }
+      categories={<CategoriesList />}
+      sort={<Sort />}
+      menu={<Menu />}
+    />
   );
 };
 

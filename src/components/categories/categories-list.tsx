@@ -1,14 +1,9 @@
 import { PIZZA_CATEGORIES } from '@/constants/constants.ts';
-import clsx from 'clsx';
 import { CategoryBtn } from './category-btn';
-import css from './category-list.module.scss';
+import css from './categories-list.module.scss';
 import { useCategoryParam } from './use-category-query';
 
-type CategoryListProps = {
-  className?: string;
-};
-
-export const CategoryList = ({ className }: CategoryListProps) => {
+export const CategoriesList = () => {
   const { activeCategory, updateCategory } = useCategoryParam();
 
   const handleCategoryClick = (category: string) => {
@@ -16,7 +11,7 @@ export const CategoryList = ({ className }: CategoryListProps) => {
   };
 
   return (
-    <ul className={clsx(css.category_list, className)}>
+    <ul className={css.category_list}>
       {PIZZA_CATEGORIES.map(category => (
         <li key={category}>
           <CategoryBtn

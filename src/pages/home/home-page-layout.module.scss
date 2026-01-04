@@ -1,9 +1,32 @@
 @use '@/app/styles/mixins' as mixins;
 
-.categories {
-  padding: 2rem 0 1rem;
+.filters_wrap {
+  padding-block: 1rem;
 
-  @include mixins.mediaMax('md') {
+  @include mixins.mediaMin('lg') {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+  }
+}
+
+.categories {
+  @include mixins.mediaMinMax('md', 'lg') {
+    width: 85%;
+    margin-inline: auto;
+  }
+
+  @include mixins.mediaMax('lg') {
+    padding-block: 1rem;
+    margin-bottom: 1rem;
     overflow-x: auto;
+  }
+}
+
+.sort {
+  @include mixins.mediaMax('lg') {
+    display: flex;
+    justify-content: center;
   }
 }
