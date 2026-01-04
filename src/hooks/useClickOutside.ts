@@ -2,8 +2,11 @@ import { useEffect, useRef } from 'react';
 
 type UseClickOutsideProps = { onClose: () => void; isOpen: boolean };
 
-export const useClickOutside = ({ onClose, isOpen }: UseClickOutsideProps) => {
-  const ref = useRef(null);
+export const useClickOutside = <T extends HTMLElement>({
+  onClose,
+  isOpen,
+}: UseClickOutsideProps) => {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     if (!isOpen) return;

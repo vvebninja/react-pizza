@@ -11,7 +11,10 @@ export const Sort = () => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedSort = searchParams.get('sortBy') ?? SORT_OPTIONS[0];
 
-  const { ref: sortContainerRef } = useClickOutside({ onClose: () => setIsOpen(false), isOpen });
+  const { ref: sortContainerRef } = useClickOutside<HTMLDivElement>({
+    onClose: () => setIsOpen(false),
+    isOpen,
+  });
 
   const handleTogglePopup = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
