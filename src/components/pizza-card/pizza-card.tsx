@@ -1,4 +1,4 @@
-import type { Pizza } from '@/api/pizza';
+import type { Pizza } from '@/api/fetchPizzas';
 import PlusIcon from '@/assets/icons/plus-icon.svg?react';
 import { useCartContext } from '@/contexts/cart';
 import clsx from 'clsx';

@@ -10,7 +10,7 @@ export const CATEGORY_LOOKUP = PIZZA_CATEGORIES.reduce(
 
 export const DEFAULT_CATEGORY = PIZZA_CATEGORIES[0];
 
-export const SORT_OPTIONS = ['price', 'popularity'];
+export const SORT_OPTIONS = ['popularity', 'price'];
 
 export const routePaths = {
   HOME: '/',

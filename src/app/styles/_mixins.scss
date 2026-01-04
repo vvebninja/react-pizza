@@ -15,7 +15,7 @@ $breakpoints: (
       @content;
     }
   } @else {
-    @warn "Breakpoint '#{$size}' not found in $breakpoints MAP.";
+    @warn "Breakpoint '#{$size}' not found in $breakpoints map. Valid keys are: #{map.keys($breakpoints)}";
   }
 }
 
@@ -23,12 +23,23 @@ $breakpoints: (
   $breakpoint: map.get($breakpoints, $size);
 
   @if $breakpoint {
-    $max-width-value: $breakpoint - 0.02px;
-
-    @media (max-width: $max-width-value) {
+    @media (max-width: ($breakpoint - 0.02px)) {
       @content;
     }
   } @else {
-    @warn "Breakpoint '#{$size}' not found in $breakpoints map. Valid keys are: #{map-keys($breakpoints)}";
+    @warn "Breakpoint '#{$size}' not found in $breakpoints map. Valid keys are: #{map.keys($breakpoints)}";
+  }
+}
+
+@mixin mediaMinMax($min, $max) {
+  $min: map.get($breakpoints, $min);
+  $max: map.get($breakpoints, $max);
+
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: ($max - 0.02px)) {
+      @content;
+    }
+  } @else {
+    @warn 'Breakpoint "#{$min} or #{$max}" not found. Valid keys are: #{map.keys($breakpoints)}';
   }
 }
