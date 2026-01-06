@@ -1,18 +1,14 @@
+import type { Pizza } from '@/api/pizza.schema';
 import clsx from 'clsx';
 import { useLoaderData, useNavigation } from 'react-router';
 import { PizzaCard } from '../pizza-card';
 import css from './menu.module.scss';
-import type { Pizza } from '@/api/fetchPizzas';
 
 export const Menu = () => {
   const { pizzas } = useLoaderData() as { pizzas: Pizza[] };
   const navigation = useNavigation();
 
   const isLoading = navigation.state === 'loading';
-
-  const menuPizzaCss = clsx(css.menu_pizza, {
-    [css.menu_pizza_is_center]: pizzas?.length < 4,
-  });
 
   return (
     <div className={css.menu}>
@@ -27,7 +23,11 @@ export const Menu = () => {
       {!isLoading && pizzas?.length > 0 && (
         <>
           <h1 className={css.menu_title}>Menu</h1>
-          <ul className={menuPizzaCss}>
+          <ul
+            className={clsx(css.menu_pizza, {
+              [css.menu_pizza_is_center]: pizzas?.length < 4,
+            })}
+          >
             {pizzas?.map(pizza => (
               <li key={pizza.id}>
                 <PizzaCard pizza={pizza} />

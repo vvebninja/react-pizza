@@ -14,6 +14,7 @@ export const ErrorDisplay = () => {
   } else {
     errorMessage = 'An unknown error occurred';
   }
+
   return (
     <section className={css.error_container}>
       <h2 className={css.error_title}>Oops! Something went wrong</h2>
