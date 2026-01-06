@@ -1,14 +1,18 @@
-import css from './ordered-pizza-card.module.scss';
-import RemoveIcon from '@/assets/icons/remove-icon.svg?react';
+import type { DoughOption, Pizza, SizeOption } from '@/api/pizza.schema';
 import MinusIcon from '@/assets/icons/minus-icon.svg?react';
 import PlusIcon from '@/assets/icons/plus-icon.svg?react';
+import RemoveIcon from '@/assets/icons/remove-icon.svg?react';
 import { Price } from '@/components/ui/price/price';
-import type { Pizza } from '@/api/fetchPizzas';
 import { useCartContext } from '@/contexts/cart';
+import css from './ordered-pizza-card.module.scss';
 
-export type OrderedPizza = Omit<Pizza, 'doughTypes' | 'sizes'> & {
-  doughType: string;
-  size: number;
+export type OrderedPizza = {
+  id: Pizza['id'];
+  title: Pizza['title'];
+  imgSrc: Pizza['imgSrc'];
+  dough: DoughOption['name'];
+  size: SizeOption['value'];
+  price: number;
   quantity: number;
 };
 
@@ -17,7 +21,7 @@ interface OrderedPizzaCardProps {
 }
 
 export const OrderedPizzaCard = ({ pizza }: OrderedPizzaCardProps) => {
-  const { id, title, imgSrc, doughType, size, quantity, price } = pizza;
+  const { id, title, imgSrc, dough, size, quantity, price } = pizza;
   const totalPrice = price * quantity;
 
   const { removeItem, increaseItemQuantityByOne, decreaseItemQuantityByOne } = useCartContext();
@@ -41,7 +45,7 @@ export const OrderedPizzaCard = ({ pizza }: OrderedPizzaCardProps) => {
         <div className={css.ordered_pizza_details}>
           <h3 className={css.ordered_pizza_title}>{title}</h3>
           <p className={css.ordered_pizza_subtitle}>
-            {doughType}, {size} cm.
+            {dough}, {size} cm.
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import type { Pizza } from '@/api/fetchPizzas';
+import type { DoughOption, Pizza, SizeOption } from '@/api/pizza.schema';
 import PlusIcon from '@/assets/icons/plus-icon.svg?react';
 import { useCartContext } from '@/contexts/cart';
 import clsx from 'clsx';
@@ -11,28 +11,40 @@ type PizzaCardProps = {
 };
 
 export const PizzaCard = ({ pizza }: PizzaCardProps) => {
-  const { id, imgSrc, title, doughTypes, sizes, price } = pizza;
-  const [selectedDoughType, setSelectedDoughType] = useState(doughTypes[0]);
-  const [selectedSize, setSelectedSize] = useState(sizes[0]);
+  const { id, imgSrc, title, options, price } = pizza;
+
+  const [selectedDough, setSelectedDough] = useState(
+    () => options.dough.find(dough => dough.isAvailable) || options.dough[0],
+  );
+  const [selectedSize, setSelectedSize] = useState(
+    options.sizes.find(size => size.isAvailable) || options.sizes[0],
+  );
   const { items: orderedPizza, addItem } = useCartContext();
 
-  const orderedPizzaId = [id, selectedDoughType, selectedSize].join('-');
+  const orderedPizzaId = [id, selectedDough, selectedSize].join('-');
+
   const currentQuantity = orderedPizza.find(pizza => pizza.id === orderedPizzaId)?.quantity;
 
-  const handleDoughTypeClick = (type: string) => {
-    setSelectedDoughType(type);
+  const currentPrice = price + selectedDough.extraPrice + selectedSize.extraPrice;
+
+  const handleDoughClick = (dough: DoughOption) => {
+    if (!dough.isAvailable) return;
+    setSelectedDough(dough);
   };
 
-  const handleSizeClick = (size: number) => {
+  const handleSizeClick = (size: SizeOption) => {
+    if (!size.isAvailable) return;
     setSelectedSize(size);
   };
 
   const handleAddPizzaClick = () => {
     addItem({
-      ...pizza,
-      doughType: selectedDoughType,
-      size: selectedSize,
       id: orderedPizzaId,
+      imgSrc,
+      title,
+      price: currentPrice,
+      dough: selectedDough.name,
+      size: selectedSize.value,
       quantity: 1,
     });
   };
@@ -53,32 +65,34 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
 
       <div className={css.pizza_options_wrap}>
         <ul className={css.pizza_options_group}>
-          {doughTypes.map(doughType => (
-            <li key={doughType}>
+          {options.dough.map(dough => (
+            <li key={dough.id}>
               <button
                 className={clsx(css.pizza_option_dough_btn, {
-                  [css.is_active]: selectedDoughType === doughType,
+                  [css.is_active]: selectedDough.name === dough.name,
                 })}
                 type="button"
-                onClick={() => handleDoughTypeClick(doughType)}
+                onClick={() => handleDoughClick(dough)}
+                disabled={!dough.isAvailable}
               >
-                {doughType}
+                {dough.name}
               </button>
             </li>
           ))}
         </ul>
 
         <ul className={css.pizza_options_group}>
-          {sizes.map(size => (
-            <li key={size}>
+          {options.sizes.map(size => (
+            <li key={size.id}>
               <button
                 className={clsx(css.pizza_option_size_btn, {
-                  [css.is_active]: size === selectedSize,
+                  [css.is_active]: size.value === selectedSize.value && selectedSize.isAvailable,
                 })}
                 type="button"
                 onClick={() => handleSizeClick(size)}
+                disabled={!size.isAvailable}
               >
-                <span>{size}</span>
+                <span>{size.value}</span>
                 <span>cm.</span>
               </button>
             </li>
@@ -88,7 +102,7 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
 
       <div className={css.pizza_footer}>
         <Price
-          value={price}
+          value={currentPrice}
           size="md"
           color="dark"
         />
