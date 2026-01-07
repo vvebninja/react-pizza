@@ -1,28 +1,20 @@
 import { useEffect, useRef } from 'react';
 
-type UseClickOutsideProps = { onClose: () => void; isOpen: boolean };
-
-export const useClickOutside = <T extends HTMLElement>({
-  onClose,
-  isOpen,
-}: UseClickOutsideProps) => {
+export const useClickOutside = <T extends HTMLElement>(onOutsideClick: () => void) => {
   const ref = useRef<T>(null);
 
   useEffect(() => {
-    if (!isOpen) return;
-
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
-        onClose();
+        onOutsideClick();
       }
     };
 
-    window.addEventListener('click', handleClickOutside);
-
+    window.addEventListener('mousedown', handleClickOutside);
     return () => {
-      window.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [onClose, isOpen]);
+  }, [onOutsideClick]);
 
-  return { ref };
+  return ref;
 };

@@ -1,2 +1,2 @@
-export * from './home-page';
-export * from './home-loader';
+export * from './HomePage';
+export * from './homeLoader';

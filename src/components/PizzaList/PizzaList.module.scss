@@ -1,0 +1,46 @@
+@use '@/app/styles/mixins' as mixins;
+
+.pizza_list {
+  display: grid;
+  justify-items: center;
+  grid-row-gap: 3rem;
+  transition:
+    opacity 0.3s ease-in-out,
+    filter 0.3s ease-in-out;
+
+  @include mixins.mediaMin('md') {
+    grid-template-columns: repeat(auto-fit, 280px);
+    justify-content: space-between;
+  }
+
+  &.is_centered {
+    @include mixins.mediaMin('lg') {
+      justify-content: center;
+      grid-column-gap: 3rem;
+    }
+  }
+
+  &_empty {
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &_skeleton {
+    width: 280px;
+    height: 400px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: pulse 1.5s infinite;
+    border-radius: 1rem;
+  }
+
+  @keyframes pulse {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}
