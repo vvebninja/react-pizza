@@ -1,2 +1,2 @@
-export * from './cart-context-provider';
+export * from './CartPontextProvider';
 export * from './useCartContext';

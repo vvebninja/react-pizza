@@ -1,1 +1,1 @@
-export * from './use-cart-reducer';
+export * from './useCartReducer';
