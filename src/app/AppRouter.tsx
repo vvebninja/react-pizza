@@ -1,13 +1,12 @@
 import { ErrorDisplay } from '@/components/ui/ErrorDisplay';
 import { routePaths } from '@/constants';
 import { CartContextProvider } from '@/contexts/cart';
-import { createBrowserRouter, RouterProvider } from 'react-router';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router';
 import { App } from './App';
 
 const router = createBrowserRouter(
   [
     {
-      path: routePaths.HOME,
       element: (
         <CartContextProvider>
           <App />
@@ -16,8 +15,12 @@ const router = createBrowserRouter(
       errorElement: <ErrorDisplay />,
       children: [
         {
-          index: true,
-          lazy: async () => await import('@/pages/home'),
+          path: routePaths.HOME,
+          loader: () => redirect(routePaths.PIZZAS),
+        },
+        {
+          path: routePaths.PIZZAS,
+          lazy: async () => await import('@/pages/pizzas'),
         },
 
         {

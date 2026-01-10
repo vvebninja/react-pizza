@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
-import css from './HomePageLayout.module.scss';
+import css from './PizzasPageLayout.module.scss';
 
 type Components = 'header' | 'categories' | 'sort' | 'menu';
 
 type HomePageLayoutProps = Record<Components, ReactNode>;
 
-export const HomePageLayout = ({ header, categories, sort, menu }: HomePageLayoutProps) => {
+export const PizzasPageLayout = ({ header, categories, sort, menu }: HomePageLayoutProps) => {
   return (
     <div>
       {header}

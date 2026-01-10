@@ -4,14 +4,14 @@ import { CategoriesList } from '@/components/CategoriesList';
 import { Menu } from '@/components/Menu';
 import { SearchBar } from '@/components/SearchBar';
 import { Sort } from '@/components/Sort';
-import { HomePageLayout } from './homePageLayout';
+import { PizzasPageLayout } from './PizzasPageLayout';
 
-const HomePage = () => {
+const PizzasPage = () => {
   return (
-    <HomePageLayout
+    <PizzasPageLayout
       header={
         <AppHeader
-          variant="home"
+          variant="pizzas_page"
           cartStatusWidget={<CartStatusWidget />}
           search={<SearchBar />}
         />
@@ -23,4 +23,4 @@ const HomePage = () => {
   );
 };
 
-export const Component = HomePage;
+export const Component = PizzasPage;
