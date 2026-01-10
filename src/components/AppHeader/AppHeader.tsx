@@ -4,14 +4,14 @@ import { AppLogo } from '../ui/AppLogo';
 import css from './AppHeader.module.scss';
 
 type AppHeaderProps = {
-  variant?: 'home';
+  variant?: 'pizzas_page';
   search?: ReactNode;
   cartStatusWidget?: ReactNode;
 };
 
 export const AppHeader: FC<AppHeaderProps> = ({ cartStatusWidget, search, variant }) => {
   const classNames = clsx(css.header, {
-    [css.header_home]: variant === 'home',
+    [css.header_home]: variant === 'pizzas_page',
   });
 
   return (

@@ -8,6 +8,8 @@ import { useSortParam } from './useSortParam';
 
 export const Sort = () => {
   const { sortValue, handleSortOptionClick } = useSortParam();
+  console.log('sort');
+
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = () => setIsOpen(!isOpen);

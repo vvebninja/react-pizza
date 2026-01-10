@@ -6,6 +6,7 @@ import { CategoryButton } from './CategoryButton';
 export const CategoriesList = () => {
   const { activeCategory, handleCategoryClick } = useCategoryParam();
 
+  console.log('categories');
 
   return (
     <ul className={css.category_list}>

@@ -1,18 +1,21 @@
-import type { Pizza } from '@/api/pizza.schema';
 import clsx from 'clsx';
-import { use } from 'react';
 import { PizzaCard } from './PizzaCard';
 import css from './PizzaList.module.scss';
+import { usePizza } from './usePizza';
+import { PizzaListSkeletons } from './PizzaListSkeletons';
 
 type PizzaListProps = {
-  pizzasPromise: Promise<Pizza[]>;
   className?: string;
 };
 
-export const PizzaList = ({ pizzasPromise, className }: PizzaListProps) => {
-  const pizzas = use(pizzasPromise);
+export const PizzaList = ({ className }: PizzaListProps) => {
+  const { data: pizzas, isLoading } = usePizza();
 
-  if (!pizzas.length) {
+  if (isLoading) {
+    return <PizzaListSkeletons />;
+  }
+
+  if (!pizzas?.length) {
     return (
       <div className={css.pizza_list_empty}>
         <p>Oops! No pizzas match your search🍕😢</p>

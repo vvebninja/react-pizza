@@ -1,29 +1,24 @@
-import { PIZZA_URL } from '@/constants';
-import axios, { isAxiosError } from 'axios';
+import axios from 'axios';
 import type { Pizza } from './pizza.schema';
+
+export const PIZZA_URL = 'https://657df33d3e3f5b1894635e6f.mockapi.io';
+
+const pizzasApi = axios.create({
+  baseURL: PIZZA_URL,
+});
+
+export const pizzasEndpoint = '/pizzas';
 
 type FetchPizzasArgs = Partial<Record<'searchQuery' | 'category' | 'sortOption', string>>;
 
-export const fetchPizzas = async (args: FetchPizzasArgs): Promise<Pizza[]> => {
-  try {
-    const response = await axios<Pizza[]>(PIZZA_URL, {
-      params: {
-        title: args.searchQuery,
-        category: args.category,
-        sortBy: args.sortOption,
-      },
-    });
+export const fetchPizzas = async (args?: FetchPizzasArgs): Promise<Pizza[]> => {
+  const response = await pizzasApi<Pizza[]>(pizzasEndpoint, {
+    params: {
+      title: args?.searchQuery,
+      category: args?.category,
+      sortBy: args?.sortOption,
+    },
+  });
 
-    return response.data;
-  } catch (error) {
-    if (isAxiosError(error)) {
-      if (error.response?.status === 404) return [];
-
-      if (error.response?.status === 503) {
-        throw new Error('Server is temporary unavailable');
-      }
-    }
-
-    throw error;
-  }
+  return response.data;
 };

@@ -4,6 +4,7 @@ import { useSearchParam } from './useSearchParam';
 
 export const SearchBar = () => {
   const { searchQuery, handleSearchChange, handleResetSearchClick } = useSearchParam();
+  console.log('searchbar');
 
   return (
     <div className={css.search}>

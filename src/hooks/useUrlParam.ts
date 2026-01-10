@@ -2,14 +2,23 @@ import { useSearchParams } from 'react-router';
 
 export const useUrlParam = (key: string, initialValue = '') => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const value = searchParams.get(key) ?? initialValue;
 
   const updateParam = (nextValue: string) => {
+    const normalizedNextValue = nextValue.toLowerCase();
+    const normalizedCurrentValue = value.toLowerCase();
+
+    if (normalizedNextValue === normalizedCurrentValue) {
+      return;
+    }
+
     setSearchParams(
       prev => {
         const nextParam = new URLSearchParams(prev);
+
         if (nextValue && nextValue !== initialValue) {
-          nextParam.set(key, nextValue.toLowerCase());
+          nextParam.set(key, normalizedNextValue);
         } else {
           nextParam.delete(key);
         }
