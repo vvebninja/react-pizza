@@ -1,0 +1,15 @@
+@use '@/app/styles/animations';
+
+.root {
+  &[href]:global(.pending) {
+    position: relative;
+    z-index: 1000;
+    cursor: wait;
+    pointer-events: none;
+    animation: pendingPulse 1.2s infinite ease-in-out;
+  }
+}
+
+.loading_label {
+  font-weight: 400;
+}

@@ -13,7 +13,7 @@ export const Price = ({ value, size = 'md', color = 'dark', className }: PricePr
 
   return (
     <div className={classNames}>
-      <span className={css.price_value}>{value}</span>
+      <span>{value}</span>
       <span className={css.price_currency}>₴</span>
     </div>
   );

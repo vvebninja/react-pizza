@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "Cheeseburger Pizza",
     "price": 450,
@@ -40,10 +40,10 @@
         }
       ]
     },
-    "category": ["meat"]
+    "categories": ["meat"]
   },
   {
-    "id": 12,
+    "id": "12",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "BBQ Beef",
     "price": 550,
@@ -83,10 +83,10 @@
         }
       ]
     },
-    "category": ["meat", "barbeque"]
+    "categories": ["meat", "barbeque"]
   },
   {
-    "id": 13,
+    "id": "13",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "Napolitana",
     "price": 350,
@@ -126,10 +126,10 @@
         }
       ]
     },
-    "category": ["meat", "hot"]
+    "categories": ["meat", "hot"]
   },
   {
-    "id": 14,
+    "id": "14",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "Margherita",
     "price": 410,
@@ -169,10 +169,10 @@
         }
       ]
     },
-    "category": ["veggie"]
+    "categories": ["veggie"]
   },
   {
-    "id": 15,
+    "id": "15",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "Grilled Chicken",
     "price": 290,
@@ -212,10 +212,10 @@
         }
       ]
     },
-    "category": ["meat", "grilled"]
+    "categories": ["meat", "grilled"]
   },
   {
-    "id": 16,
+    "id": "16",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "Cheesy Chicken",
     "price": 290,
@@ -255,10 +255,10 @@
         }
       ]
     },
-    "category": ["meat"]
+    "categories": ["meat"]
   },
   {
-    "id": 17,
+    "id": "17",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "Cheesy",
     "price": 350,
@@ -298,10 +298,10 @@
         }
       ]
     },
-    "category": []
+    "categories": ["veggie"]
   },
   {
-    "id": 18,
+    "id": "18",
     "imgSrc": "https://imageproxy.wolt.com/menu/menu-images/651d1c93e5bc9c8f9d9e76bb/6d9612f8-99ec-11f0-ad11-5efda5fb334d_image_recipe_679_64981b95_86c3_47da_a2a3_ee696feb390e.jpg",
     "title": "Asian-style Shrimp",
     "price": 380,
@@ -341,6 +341,6 @@
         }
       ]
     },
-    "category": ["hot", "meat"]
+    "categories": ["hot", "meat"]
   }
 ]

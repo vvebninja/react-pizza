@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -10,16 +11,19 @@ body {
 
   min-height: 100%;
   padding: var(--body-padding);
+
+  font-family: 'Proxima Nova';
   background-color: #ffdf8c;
   color: var(--color-main-dark);
-  font-family: 'Proxima Nova';
   letter-spacing: var(--main-letter-spacing);
 }
 
 #root {
+  position: relative;
   flex-grow: 1;
   max-width: var(--root-width);
   width: 100%;
+
   padding-inline: var(--root-pd-inline);
   background-color: var(--color-main-light);
   border-radius: 0.75rem;

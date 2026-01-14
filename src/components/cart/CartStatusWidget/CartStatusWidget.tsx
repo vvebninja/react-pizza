@@ -1,29 +1,29 @@
-import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg?react';
-import { routePaths } from '@/constants';
-import css from './CartStatusWidget.module.scss';
-import { useCartContext } from '@/contexts/cart';
-import { LinkButton } from '@/components/ui/LinkButton';
+import { ShoppingCart } from '@/assets/icons';
+import { PendingNavLink } from '@/components/ui/PendingNavLink';
 import { Price } from '@/components/ui/Price';
+import { routePaths } from '@/constants';
+import { useCartContext } from '@/contexts/cart';
+import css from './CartStatusWidget.module.scss';
 
 export const CartStatusWidget = () => {
   const { totalPrice, totalItems } = useCartContext();
 
   return (
-    <LinkButton
-      className={css.cart_widget}
+    <PendingNavLink
+      to={routePaths.CART}
       size="md"
+      weight="bold"
       variant="solid"
       color="accent"
-      to={routePaths.CART}
     >
       <Price
         size="sm"
         value={totalPrice}
         color="light"
       />
-      <span className={css.cart_widget_divider} />
-      <ShoppingCartIcon className={css.cart_widget_icon} />
-      <span className={css.cart_widget_total}>{totalItems}</span>
-    </LinkButton>
+      <div className={css.divider} />
+      <ShoppingCart />
+      {totalItems}
+    </PendingNavLink>
   );
 };

@@ -1,4 +1,4 @@
-import ArrowUpIcon from '@/assets/icons/arrow-up-icon.svg?react';
+import { ArrowUp } from '@/assets/icons';
 import { SORT_OPTIONS } from '@/constants/constants';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import clsx from 'clsx';
@@ -8,7 +8,6 @@ import { useSortParam } from './useSortParam';
 
 export const Sort = () => {
   const { sortValue, handleSortOptionClick } = useSortParam();
-  console.log('sort');
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,28 +23,28 @@ export const Sort = () => {
 
   return (
     <div
-      className={css.sort}
+      className={css.root}
       ref={sortRef}
     >
       <button
-        className={css.sort_trigger}
+        className={css.popup_trigger}
         onClick={togglePopup}
         aria-expanded={isOpen}
       >
-        <ArrowUpIcon className={clsx(css.sort_icon, { [css.rotate]: isOpen })} />
-        <div className={css.sort_text_wrap}>
-          <span className={css.sort_title}>sort by:</span>
-          <span className={css.sort_selected_sort_wrap}>
-            <span className={css.sort_selected_sort}>{sortValue}</span>
+        <ArrowUp className={clsx(css.icon, { [css.is_rotated]: isOpen })} />
+        <div>
+          <span className={css.title}>sort by:</span>
+          <span className={css.selected_sort_wrap}>
+            <span className={css.selected_sort}>{sortValue}</span>
           </span>
         </div>
       </button>
 
-      <ul className={clsx(css.sort_popover, { [css.is_visible]: isOpen })}>
+      <ul className={clsx(css.sort_popup, { [css.is_visible]: isOpen })}>
         {SORT_OPTIONS.map(option => (
           <li key={option}>
             <button
-              className={clsx(css.sort_option, { [css.active]: sortValue === option })}
+              className={clsx(css.option, { [css.active]: sortValue === option })}
               onClick={() => handleOptionClick(option)}
             >
               {option}

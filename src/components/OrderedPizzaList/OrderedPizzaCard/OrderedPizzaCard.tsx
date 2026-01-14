@@ -1,10 +1,8 @@
 import type { DoughOption, Pizza, SizeOption } from '@/api/pizza.schema';
-import MinusIcon from '@/assets/icons/minus-icon.svg?react';
-import PlusIcon from '@/assets/icons/plus-icon.svg?react';
-import RemoveIcon from '@/assets/icons/remove-icon.svg?react';
+import { Clear, Minus, Plus } from '@/assets/icons';
+import { Price } from '@/components/ui/Price';
 import { useCartContext } from '@/contexts/cart';
 import css from './OrderedPizzaCard.module.scss';
-import { Price } from '@/components/ui/Price';
 
 export type OrderedPizza = {
   id: Pizza['id'];
@@ -33,52 +31,52 @@ export const OrderedPizzaCard = ({ pizza }: OrderedPizzaCardProps) => {
   const handleDecreaseQuantityClick = () => decreaseItemQuantityByOne(id);
 
   return (
-    <article className={css.ordered_pizza}>
-      <div className={css.ordered_pizza_info}>
+    <article className={css.root}>
+      <div className={css.pizza_info}>
         <img
-          className={css.ordered_pizza_img}
+          className={css.image}
           src={imgSrc}
           alt={title}
           width={80}
           height={80}
         />
-        <div className={css.ordered_pizza_details}>
-          <h3 className={css.ordered_pizza_title}>{title}</h3>
-          <p className={css.ordered_pizza_subtitle}>
+        <div className={css.details}>
+          <h3 className={css.title}>{title}</h3>
+          <p className={css.subtitle}>
             {dough}, {size} cm.
           </p>
         </div>
       </div>
 
-      <div className={css.ordered_pizza_counter}>
+      <div className={css.pizza_counter}>
         <button
-          className={css.ordered_pizza_counter_btn}
+          className={css.button}
           disabled={quantity === 1}
           onClick={handleDecreaseQuantityClick}
         >
-          <MinusIcon />
+          <Minus />
         </button>
-        <span className={css.ordered_pizza_counter_count}>{quantity}</span>
+        <span className={css.count}>{quantity}</span>
         <button
-          className={css.ordered_pizza_counter_btn}
+          className={css.button}
           onClick={handleIncreaseQuantityClick}
         >
-          <PlusIcon />
+          <Plus />
         </button>
       </div>
 
-      <div className={css.ordered_pizza_actions}>
+      <div className={css.pizza_actions}>
         <Price
-          className={css.ordered_pizza_price}
+          className={css.price}
           value={totalPrice}
           size="md"
         />
         <button
-          className={css.ordered_pizza_remove}
+          className={css.remove_btn}
           type="button"
           onClick={handleRemoveItemClick}
         >
-          <RemoveIcon className={css.ordered_pizza_remove_icon} />
+          <Clear />
         </button>
       </div>
     </article>

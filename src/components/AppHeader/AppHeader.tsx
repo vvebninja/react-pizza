@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { AppLogo } from '../ui/AppLogo';
 import css from './AppHeader.module.scss';
 
@@ -9,9 +9,9 @@ type AppHeaderProps = {
   cartStatusWidget?: ReactNode;
 };
 
-export const AppHeader: FC<AppHeaderProps> = ({ cartStatusWidget, search, variant }) => {
+export const AppHeader = ({ cartStatusWidget, search, variant }: AppHeaderProps) => {
   const classNames = clsx(css.header, {
-    [css.header_home]: variant === 'pizzas_page',
+    [css.header_pizzas_page]: variant === 'pizzas_page',
   });
 
   return (
@@ -20,8 +20,8 @@ export const AppHeader: FC<AppHeaderProps> = ({ cartStatusWidget, search, varian
         title="React Pizza"
         subtitle="the best pizza in you city"
       />
-      {cartStatusWidget && <div className={css.header_cart_widget_wrap}>{cartStatusWidget}</div>}
-      {search && <div className={css.header_search_wrap}>{search}</div>}
+      {cartStatusWidget && <div className={css.cart_widget_wrap}>{cartStatusWidget}</div>}
+      {search && <div className={css.search_wrap}>{search}</div>}
     </header>
   );
 };

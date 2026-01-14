@@ -10,24 +10,16 @@ $breakpoints: (
 @mixin mediaMin($size) {
   $breakpoint: map.get($breakpoints, $size);
 
-  @if $breakpoint {
-    @media (min-width: $breakpoint) {
-      @content;
-    }
-  } @else {
-    @warn "Breakpoint '#{$size}' not found in $breakpoints map. Valid keys are: #{map.keys($breakpoints)}";
+  @media (min-width: $breakpoint) {
+    @content;
   }
 }
 
 @mixin mediaMax($size) {
   $breakpoint: map.get($breakpoints, $size);
 
-  @if $breakpoint {
-    @media (max-width: ($breakpoint - 0.02px)) {
-      @content;
-    }
-  } @else {
-    @warn "Breakpoint '#{$size}' not found in $breakpoints map. Valid keys are: #{map.keys($breakpoints)}";
+  @media (max-width: ($breakpoint - 0.02px)) {
+    @content;
   }
 }
 
@@ -35,11 +27,13 @@ $breakpoints: (
   $min: map.get($breakpoints, $min);
   $max: map.get($breakpoints, $max);
 
-  @if $min and $max {
-    @media (min-width: $min) and (max-width: ($max - 0.02px)) {
-      @content;
-    }
-  } @else {
-    @warn 'Breakpoint "#{$min} or #{$max}" not found. Valid keys are: #{map.keys($breakpoints)}';
+  @media (min-width: $min) and (max-width: ($max - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin activeState() {
+  &.is_active {
+    @content;
   }
 }

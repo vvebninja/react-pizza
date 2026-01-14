@@ -1,0 +1,14 @@
+.overlay {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  transition: backdrop-filter 0.3s ease-in-out;
+  transition-delay: 0.135s;
+  border-radius: 14px;
+
+  &.is_navigating {
+    backdrop-filter: blur(3px);
+    z-index: 999;
+  }
+}

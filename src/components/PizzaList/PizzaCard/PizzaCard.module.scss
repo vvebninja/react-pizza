@@ -1,32 +1,50 @@
-.pizza {
+.root {
   max-width: 17.5rem;
+}
 
-  &_title {
-    margin: 0 0 1.5rem;
-    font-size: 1.25em;
-    font-weight: 800;
-    text-align: center;
+.image_wrap {
+  position: relative;
+  height: 280px;
+  width: 280px;
+
+  .image {
+    transition: opacity 0.2s ease;
+    opacity: 0;
+    height: 280px;
+    width: 280px;
+    object-fit: cover;
+
+    &.is_loaded {
+      opacity: 1;
+    }
   }
+}
 
-  &_options_wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.pizza_title {
+  margin: 0 0 1.5rem;
+  font-size: 1.25em;
+  font-weight: 800;
+  text-align: center;
+}
 
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 0.25rem;
+.pizza_options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-    border-radius: 0.75rem;
-    background-color: var(--color-options-bg);
-  }
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.25rem;
 
-  &_options_group {
+  border-radius: 0.75rem;
+  background-color: var(--color-options-bg);
+
+  .group {
     display: flex;
     justify-content: space-around;
   }
 
-  &_option_dough_btn,
-  &_option_size_btn {
+  .dough_btn,
+  .size_btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,22 +63,28 @@
     }
   }
 
-  &_option_dough_btn {
+  .dough_btn {
     height: 2rem;
     width: 8.125rem;
   }
 
-  &_option_size_btn {
+  .size_btn {
     gap: 3px;
     height: 2rem;
     width: 5.325rem;
   }
+}
 
-  &_footer {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-  }
+.pizza_footer_skel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pizza_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   .price {
     display: flex;
@@ -71,7 +95,7 @@
     font-size: 1rem;
   }
 
-  &_add_btn {
+  .add_btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -99,13 +123,13 @@
       color: var(--color-main-light);
       cursor: pointer;
     }
+
+    svg {
+      fill: currentColor;
+    }
   }
 
-  &_add_icon {
-    fill: currentColor;
-  }
-
-  &_quantity {
+  .quantity {
     display: inline-flex;
     align-items: center;
     justify-content: center;

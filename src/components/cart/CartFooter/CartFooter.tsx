@@ -1,8 +1,8 @@
-import ArrowLeftIcon from '@/assets/icons/arrow-left-icon.svg?react';
+import { Button } from '@/components/ui/Button';
+import { GoBackLink } from '@/components/ui/GoBackLink';
 import { routePaths } from '@/constants';
 import { useCartContext } from '@/contexts/cart';
-import clsx from 'clsx';
-import { LinkButton } from '../../ui/LinkButton/LinkButton';
+import { NavLink } from 'react-router';
 import { Price } from '../../ui/Price/Price';
 import css from './CartFooter.module.scss';
 
@@ -14,41 +14,33 @@ export const CartFooter = ({ className }: CartFooterProps) => {
   const { totalItems, totalPrice } = useCartContext();
 
   return (
-    <footer className={clsx(css.cart_footer, className)}>
-      <div className={css.cart_footer_summary}>
-        <div className={css.cart_footer_total}>
-          <span>Pizzas:</span>
-          <strong className={css.cart_footer_count}>{totalItems}</strong>
+    <footer className={className}>
+      <div className={css.footer_summary}>
+        <div className={css.total}>
+          <span className={css.label}>Pizzas:</span>
+          <strong className={css.amount}>{totalItems}</strong>
         </div>
-        <div className={css.cart_footer_total}>
-          <span className={css.total_price_label}>Order total:</span>
+        <div className={css.total}>
+          <span className={css.label}>Order total:</span>
           <Price
             value={totalPrice}
             size="lg"
-            className={css.cart_footer_price}
+            color="accent"
           />
         </div>
       </div>
 
-      <div className={css.cart_footer_actions}>
-        <LinkButton
-          to={routePaths.HOME}
-          size="lg"
-          variant="subtle"
-          className={css.cart_footer_back}
-        >
-          <ArrowLeftIcon />
-          <span>Go back</span>
-        </LinkButton>
-
-        <LinkButton
+      <div className={css.footer_actions}>
+        <GoBackLink variant="subtle" />
+        <Button
+          as={NavLink}
           to={routePaths.CHECKOUT}
           size="lg"
           variant="solid"
           color="accent"
         >
-          <span>Pay now</span>
-        </LinkButton>
+          Pay now
+        </Button>
       </div>
     </footer>
   );
