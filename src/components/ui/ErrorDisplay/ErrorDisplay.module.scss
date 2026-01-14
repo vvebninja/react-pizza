@@ -1,4 +1,4 @@
-.error {
+.root {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,30 +6,15 @@
   height: 80vh;
   text-align: center;
   padding: 2rem;
+}
 
-  &_title {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-  }
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
 
-  &_message {
-    color: var(--color-main-gray);
-    margin-bottom: 2rem;
-  }
-  &_go_back {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--color-main-gray);
-
-    svg {
-      width: 1.2rem;
-      transition: transform 0.2s;
-    }
-
-    &:hover svg {
-      transform: translateX(-4px);
-    }
-  }
+.subtitle {
+  color: var(--color-main-gray);
+  margin-bottom: 2rem;
 }

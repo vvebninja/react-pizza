@@ -1,5 +1,17 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "none",
+          "sass": {
+            "loadPaths": ["./src"],
+            "includePaths": ["./scr"]
+          }
+        }
+      }
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

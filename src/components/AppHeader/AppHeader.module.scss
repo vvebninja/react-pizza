@@ -5,7 +5,7 @@
   border-bottom: 1px solid var(--color-main-border);
   padding-block: 1.9rem;
 
-  &_home {
+  &_pizzas_page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,13 +18,13 @@
     }
   }
 
-  &_search_wrap {
+  .search_wrap {
     @include mixins.mediaMin('md') {
       margin-inline: auto;
     }
   }
 
-  &_cart_widget_wrap {
+  .cart_widget_wrap {
     @include mixins.mediaMin('lg') {
       order: 2;
     }

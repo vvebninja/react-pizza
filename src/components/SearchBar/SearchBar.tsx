@@ -1,13 +1,12 @@
-import ClearIcon from '@/assets/icons/remove-icon.svg?react';
+import { Clear } from '@/assets/icons';
 import css from './SearchBar.module.scss';
 import { useSearchParam } from './useSearchParam';
 
 export const SearchBar = () => {
   const { searchQuery, handleSearchChange, handleResetSearchClick } = useSearchParam();
-  console.log('searchbar');
 
   return (
-    <div className={css.search}>
+    <div className={css.root}>
       <input
         className={css.search_input}
         type="search"
@@ -19,10 +18,10 @@ export const SearchBar = () => {
 
       {searchQuery && (
         <button
-          className={css.search_clear_btn}
+          className={css.reset_search_btn}
           onClick={handleResetSearchClick}
         >
-          <ClearIcon className={css.search_clear_icon} />
+          <Clear />
         </button>
       )}
     </div>

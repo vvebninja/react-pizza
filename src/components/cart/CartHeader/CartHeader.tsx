@@ -1,5 +1,4 @@
-import ShoppingCartIcon from '@/assets/icons/shopping-cart-icon.svg?react';
-import TrashBinIcon from '@/assets/icons/trash-bin-icon.svg?react';
+import { ShoppingCart, TrashBin } from '@/assets/icons';
 import css from './CartHeader.module.scss';
 
 type CartHeaderProps = {
@@ -9,18 +8,18 @@ type CartHeaderProps = {
 
 export const CartHeader = ({ title, onClear }: CartHeaderProps) => {
   return (
-    <header className={css.cart_header}>
-      <h2 className={css.cart_header_title}>
-        <ShoppingCartIcon />
+    <header className={css.root}>
+      <h2 className={css.header_title}>
+        <ShoppingCart />
         <span>{title}</span>
       </h2>
 
       <button
-        className={css.cart_header_clear}
+        className={css.clear_cart}
         type="button"
         onClick={onClear}
       >
-        <TrashBinIcon />
+        <TrashBin />
         <span>Clear cart</span>
       </button>
     </header>

@@ -1,56 +1,57 @@
-.search {
-  height: 40px;
+.root {
   position: relative;
+  height: 40px;
   max-width: 17.5rem;
+}
 
-  &_input {
-    border: 1px solid var(--color-main-gray);
-    border-radius: 30px;
-    font-size: 1.2rem;
+.search_input {
+  height: 100%;
+  width: 100%;
+  padding-inline: 1.3rem 2.5rem;
+  font-size: 1.2rem;
+
+  outline: transparent;
+  border: 1px solid var(--color-gray-500);
+  border-radius: 30px;
+  transition: all 0.25s;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &:focus {
+    outline: 1px solid var(--color-gray-500);
+  }
+}
+
+.reset_search_btn {
+  position: absolute;
+  right: 0.7rem;
+  inset-block: 0;
+
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-block: auto;
+
+  background-color: transparent;
+  color: var(--color-accent);
+  border: none;
+  transition: all 0.25s;
+
+  &:focus {
     outline: transparent;
-    padding-inline: 1.3rem 2.5rem;
-    transition: all 0.25s;
-
-    height: 100%;
-    width: 100%;
-
-    &::-webkit-search-cancel-button {
-      display: none;
-    }
-
-    &:focus {
-      outline: 1px solid var(--color-main-gray);
-    }
   }
 
-  &_clear_btn {
-    position: absolute;
-    right: 0.7rem;
-    inset-block: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-
-    border: none;
-    background-color: transparent;
-    color: var(--color-accent);
-    margin-block: auto;
-    transition: all 0.25s;
-
-    &:focus {
-      outline: transparent;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-main-dark);
-    }
-
-    &:hover {
-      rotate: 90deg;
-      cursor: pointer;
-    }
+  &:focus-visible {
+    outline: 2px solid var(--color-main-dark);
   }
 
-  &_clear_icon {
+  &:hover {
+    rotate: 90deg;
+    cursor: pointer;
+  }
+
+  svg {
     position: absolute;
     inset: 0;
     width: 1rem;

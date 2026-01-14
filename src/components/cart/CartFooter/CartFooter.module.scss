@@ -1,62 +1,43 @@
 @use '@/app/styles/mixins' as mixins;
 
-.cart_footer {
-  &_summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2.5rem;
-    font-size: 1.1rem;
+.footer_summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
 
-    @include mixins.mediaMin('md') {
-      font-size: 1.5rem;
-    }
+  @include mixins.mediaMin('md') {
+    font-size: 1.5rem;
   }
 
-  &_total {
+  .total {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
 
-    .total_price_label {
-      @include mixins.mediaMax('md') {
-        display: none;
-      }
-    }
-
-    strong,
-    .cart_footer_price {
-      color: var(--color-accent);
-      font-weight: 800;
-      font-size: 1.6rem;
+  .label {
+    @include mixins.mediaMax('md') {
+      display: none;
     }
   }
 
-  &_actions {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 1rem;
-
-    @include mixins.mediaMin('md') {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .amount {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 1.6rem;
   }
+}
 
-  &_back {
-    display: flex;
+.footer_actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+
+  @include mixins.mediaMin('md') {
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.75rem;
-    color: var(--color-main-gray);
-
-    svg {
-      width: 1.2rem;
-      transition: transform 0.2s;
-    }
-
-    &:hover svg {
-      transform: translateX(-4px);
-    }
   }
 }

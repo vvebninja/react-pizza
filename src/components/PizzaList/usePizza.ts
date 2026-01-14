@@ -1,7 +1,6 @@
-import { fetchPizzas } from '@/api/fetchPizzas';
+import { pizzasEndpoint as cacheKey, fetchPizzas } from '@/api/fetchPizzas';
 import { useSearchParams } from 'react-router';
 import useSWR from 'swr';
-import { pizzasEndpoint as cacheKey } from '@/api/fetchPizzas';
 
 export const usePizza = () => {
   const filters = usePizzaFilters();
@@ -17,7 +16,7 @@ export const usePizza = () => {
   return { data, error, isLoading };
 };
 
-const usePizzaFilters = () => {
+export const usePizzaFilters = () => {
   const [params] = useSearchParams();
 
   return {
