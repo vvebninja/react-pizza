@@ -1,6 +1,6 @@
 import type { DoughOption, Pizza, SizeOption } from '@/api/pizza.schema';
 import { Clear, Minus, Plus } from '@/assets/icons';
-import { Price } from '@/components/ui/Price';
+import { Price } from '@/components/Price';
 import { useCartContext } from '@/contexts/cart';
 import css from './OrderedPizzaCard.module.scss';
 

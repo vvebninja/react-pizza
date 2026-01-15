@@ -1,12 +1,14 @@
-.divider {
-  height: 25px;
-  width: 1px;
-  margin-inline: 1rem;
-  background-color: #fff;
-}
+.root {
+  .divider {
+    height: 25px;
+    width: 1px;
+    margin-inline: 1rem;
+    background-color: #fff;
+  }
 
-svg {
-  height: 1rem;
-  width: 1rem;
-  margin-right: 0.25rem;
+  svg {
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.25rem;
+  }
 }

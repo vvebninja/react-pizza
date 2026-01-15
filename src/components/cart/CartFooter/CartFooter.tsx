@@ -1,9 +1,9 @@
+import { GoBackLink } from '@/components/GoBackLink';
+import { Price } from '@/components/Price';
 import { Button } from '@/components/ui/Button';
-import { GoBackLink } from '@/components/ui/GoBackLink';
 import { routePaths } from '@/constants';
 import { useCartContext } from '@/contexts/cart';
 import { NavLink } from 'react-router';
-import { Price } from '../../ui/Price/Price';
 import css from './CartFooter.module.scss';
 
 type CartFooterProps = {
@@ -31,7 +31,11 @@ export const CartFooter = ({ className }: CartFooterProps) => {
       </div>
 
       <div className={css.footer_actions}>
-        <GoBackLink variant="subtle" />
+        <GoBackLink
+          to={routePaths.PIZZAS}
+          variant="subtle"
+          color="gray"
+        />
         <Button
           as={NavLink}
           to={routePaths.CHECKOUT}

@@ -1,0 +1,5 @@
+@use '@/app/styles/animations';
+
+.spinner {
+  animation: spin 1s linear infinite;
+}

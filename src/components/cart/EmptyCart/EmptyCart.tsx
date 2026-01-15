@@ -1,5 +1,6 @@
 import { ShoppingCart } from '@/assets/images';
-import { GoBackLink } from '@/components/ui/GoBackLink';
+import { GoBackLink } from '@/components/GoBackLink';
+import { routePaths } from '@/constants';
 import clsx from 'clsx';
 import css from './EmptyCart.module.scss';
 
@@ -17,7 +18,9 @@ export const EmptyCart = ({ className }: EmptyCartProps) => {
         To get started, just head over to the homepage!
       </p>
       <ShoppingCart className={css.image} />
+
       <GoBackLink
+        to={routePaths.PIZZAS}
         variant="solid"
         color="dark"
       />

@@ -1,0 +1,26 @@
+.root {
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0 0 2rem;
+  color: var(--color-main-gray);
+}
+
+.try_again_btn {
+  svg {
+    transition: all 0.4s ease-in-out;
+    transform: rotate(0deg);
+  }
+
+  &:hover svg {
+    transform: rotate(360deg);
+  }
+}

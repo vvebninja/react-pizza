@@ -1,0 +1,9 @@
+@use '@/app/styles/animations';
+
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+.label {
+  margin-left: 0.5rem;
+}

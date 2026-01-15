@@ -1,29 +1,23 @@
 import clsx from 'clsx';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { PizzaCard } from './PizzaCard';
-import { PizzaSkeleton } from './PizzaCard/PizzaSkeleton';
 import css from './PizzaList.module.scss';
 import { usePizza } from './usePizza';
 
-type PizzaListProps = {
-  className?: string;
-};
+export const PizzaList = () => {
+  const { pizzas } = usePizza();
 
-export const PizzaList = ({ className }: PizzaListProps) => {
-  const { data: pizzas, isLoading, error } = usePizza();
+  const classNames = clsx(css.root, {
+    [css.is_centered]: pizzas.length < 4,
+  });
 
-  if (error?.code === 404) {
+  if (pizzas?.length === 0) {
     return <div className={css.not_found_message}>Oops! No pizzas match your search🍕😢</div>;
   }
 
   return (
-    <ul
-      className={clsx(css.root, className, {
-        [css.is_centered]: pizzas && pizzas?.length < 4,
-      })}
-    >
-      {isLoading && <PizzaSkeleton cardItems={9} />}
-      {pizzas?.map(pizza => (
+    <ul className={classNames}>
+      {pizzas.map(pizza => (
         <li key={pizza.id}>
           <PizzaCard pizza={pizza} />
         </li>

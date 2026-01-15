@@ -1,8 +1,8 @@
 import type { Pizza } from '@/api/pizza.schema';
 import { Plus } from '@/assets/icons';
-import { Price } from '@/components/ui/Price';
+import { Price } from '@/components/Price';
 import clsx from 'clsx';
-import Skeleton from 'react-loading-skeleton';
+import { ImageSkeleton } from '../PizzaListSkeleton';
 import css from './PizzaCard.module.scss';
 import { usePizzaCard } from './usePizzaCard';
 
@@ -29,13 +29,7 @@ export const PizzaCard = ({ pizza }: PizzaCardProps) => {
   return (
     <div className={css.root}>
       <div className={css.image_wrap}>
-        {!isImageLoaded && (
-          <Skeleton
-            circle
-            width={260}
-            height={260}
-          />
-        )}
+        {!isImageLoaded && <ImageSkeleton />}
         <img
           className={clsx(css.image, { [css.is_loaded]: isImageLoaded })}
           src={imgSrc}
