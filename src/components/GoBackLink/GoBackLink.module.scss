@@ -1,15 +1,16 @@
 @use '@/app/styles/animations';
 
 .root {
+  gap: 0.5rem;
+
   &[href]:global(.pending) {
     position: relative;
     z-index: 1000;
     cursor: wait;
     pointer-events: none;
-    animation: pendingPulse 1.2s infinite ease-in-out;
   }
 }
 
 .loading_label {
-  font-weight: 400;
+  margin-left: 0.5rem;
 }

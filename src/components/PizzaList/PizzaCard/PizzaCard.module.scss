@@ -10,8 +10,6 @@
   .image {
     transition: opacity 0.2s ease;
     opacity: 0;
-    height: 280px;
-    width: 280px;
     object-fit: cover;
 
     &.is_loaded {

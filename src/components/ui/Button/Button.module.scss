@@ -11,6 +11,13 @@
   border-radius: 2rem;
   transition: all 0.25s ease-in-out;
 
+  &[href]:global(.pending) {
+    position: relative;
+    z-index: 1000;
+    cursor: wait;
+    pointer-events: none;
+  }
+
   &:hover {
     cursor: pointer;
   }
