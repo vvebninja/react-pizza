@@ -17,7 +17,7 @@ export const CartFooter = ({ className }: CartFooterProps) => {
     <footer className={className}>
       <div className={css.footer_summary}>
         <div className={css.total}>
-          <span className={css.label}>Pizzas:</span>
+          <span className={css.quantity_label}>Pizzas:</span>
           <strong className={css.amount}>{totalItems}</strong>
         </div>
         <div className={css.total}>
